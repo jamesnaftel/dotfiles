@@ -1,0 +1,16 @@
+#!/bin/bash
+
+function viewmd() { pandoc -t plain "$1" | less; }
+
+# Use Git’s colored diff when available
+hash git &>/dev/null;
+if [ $? -eq 0 ]; then
+	function diff() {
+		git diff --no-index --color-words "$@";
+	}
+fi;
+
+# Git branch in prompt.
+function parse_git_branch() {
+	    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# set prompts and colors
+#
+#
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+export PS1="\h \W\[\033[01;36m\]\$(parse_git_branch)\[\033[00m\] $ "
