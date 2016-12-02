@@ -14,3 +14,64 @@ fi;
 function parse_git_branch() {
 	    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
+# Make and enter a new dir
+mkd() {
+	mkdir -p "$@"
+	cd "$@"
+}
+
+# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression - thx jessfraz!
+targz() {
+	local tmpFile="${1%/}.tar"
+	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${1}" || return 1
+
+	size=$(
+	stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+	stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
+	)
+
+	local cmd=""
+	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+		# the .tar file is smaller than 50 MB and Zopfli is available; use it
+		cmd="zopfli"
+	else
+		if hash pigz 2> /dev/null; then
+			cmd="pigz"
+		else
+			cmd="gzip"
+		fi
+	fi
+
+	echo "Compressing .tar using \`${cmd}\`…"
+	"${cmd}" -v "${tmpFile}" || return 1
+	[ -f "${tmpFile}" ] && rm "${tmpFile}"
+	echo "${tmpFile}.gz created successfully."
+}
+
+# go to a folder easily in your gopath - thx jessfraz!
+gogo(){
+	local d=$1
+
+	if [[ -z $d ]]; then
+		echo "You need to specify a project name."
+		return 1
+	fi
+
+	if [[ "$d" == github* ]]; then
+		d=$(echo "$d" | sed 's/.*\///')
+	fi
+	d=${d%/}
+
+	# search for the project dir in the GOPATH
+	local path=( $(find "${GOPATH}/src" \( -type d -o -type l \) -iname "$d"  | awk '{print length, $0;}' | sort -n | awk '{print $2}') )
+
+	if [ "${path[0]}" == "" ] || [ "${path[*]}" == "" ]; then
+		echo "Could not find a directory named $d in $GOPATH"
+		echo "Maybe you need to 'go get' it ;)"
+		return 1
+	fi
+
+	# enter the first path found
+	cd "${path[0]}" || return 1
+}
