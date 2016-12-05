@@ -50,7 +50,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=$HOME/bin:$PATH
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 if [ -f ~/.load-config ]; then
