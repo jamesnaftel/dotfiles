@@ -1,8 +1,8 @@
-# bashrc
+#"" bashrc
 #
 
 # Source dotfiles
-for file in ~/.{exports,aliases,functions,prompts}; do
+for file in ~/.{exports,aliases,functions,prompts,sapfunctions,sapaliases,sapexports}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
