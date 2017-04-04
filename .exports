@@ -5,3 +5,6 @@
 #
 export GOPATH=$HOME/dev/go
 export PATH="$PATH:$GOPATH/bin"
+
+# set color mode for hh
+export HH_CONFIG=hicolor,blacklist
