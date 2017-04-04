@@ -56,3 +56,9 @@ if [ -f ~/.load-config ]; then
     source ~/.load-config
 fi
 
+export PATH=$PATH:/usr/local/go/bin
+
+if grep -iq microsoft /proc/version; then
+	setterm -blength 0
+	umask 022
+fi
