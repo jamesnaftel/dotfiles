@@ -29,3 +29,5 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias dc='docker-compose'
+
+alias depgraph='dep status -dot | dot -T png | open -f -a /Applications/Preview.app'
