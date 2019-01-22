@@ -16,7 +16,7 @@ then
 	source ~/.sapfunctions
 fi
 
-export PATH="/usr/local/bin:$PATH:/usr/local/opt/go/libexec/bin"
+export PATH="/usr/local/bin:$PATH:/usr/local/opt/go/libexec/bin:/usr/local/go/bin"
 
 # fix ctrl-w in VIM
 stty start undef stop undef
@@ -30,3 +30,5 @@ if [ $os == "darwin" ]; then
         . $(brew --prefix)/etc/bash_completion
 	fi
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
