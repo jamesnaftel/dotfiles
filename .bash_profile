@@ -30,3 +30,5 @@ if [ $os == "darwin" ]; then
         . $(brew --prefix)/etc/bash_completion
 	fi
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

@@ -1,4 +1,7 @@
-#!/dev/null
+#!/bin/bash
+
+# kubernetes
+alias k='kubectl'
 
 # enable color for grep
 alias grep='grep --color=auto'
