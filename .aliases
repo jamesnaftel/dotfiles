@@ -34,3 +34,6 @@ fi
 alias dc='docker-compose'
 
 alias depgraph='dep status -dot | dot -T png | open -f -a /Applications/Preview.app'
+
+alias dockerlogin='lpass show --password docker.com | docker login -u jamesnaftel --password-stdin'
+
