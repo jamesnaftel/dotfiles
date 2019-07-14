@@ -65,3 +65,6 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=/home/james/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/bin:/bin:/home/james/dev/go/bin:/usr/local/go/bin:/home/james/.rvm/bin:/snap/bin
+
+complete -C /usr/local/bin/mc mc

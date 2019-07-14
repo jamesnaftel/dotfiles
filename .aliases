@@ -36,3 +36,5 @@ alias dc='docker-compose'
 alias depgraph='dep status -dot | dot -T png | open -f -a /Applications/Preview.app'
 
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+
+alias gom="export GO111MODULE=on"
