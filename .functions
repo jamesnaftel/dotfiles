@@ -64,14 +64,30 @@ gogo(){
 	d=${d%/}
 
 	# search for the project dir in the GOPATH
-	local path=( $(find "${GOPATH}/src" \( -type d -o -type l \) -iname "$d"  | awk '{print length, $0;}' | sort -n | awk '{print $2}') )
+	local path=( $(find "${GOPATH}/src" \( -type d -o -type l \) -iname "$d" 2>&1 | awk '{print length, $0;}' | head -1 | sort -n | awk '{print $2}') )
 
-	if [ "${path[0]}" == "" ] || [ "${path[*]}" == "" ]; then
+	#if [ "${path[1]}" == "" ] || [ "${path[*]}" == "" ]; then
+	if [ ${#path[@]} -eq 0 ]; then
 		echo "Could not find a directory named $d in $GOPATH"
 		echo "Maybe you need to 'go get' it ;)"
 		return 1
 	fi
 
 	# enter the first path found
-	cd "${path[0]}" || return 1
+	cd "${path[1]}" || return 1
+}
+
+podn(){
+    local label=$1
+	local ns=$2
+	 k get pod -l app=$label -n $ns -o jsonpath="{.items[0].metadata.name}"
+
+}
+
+ml-tags(){
+	local n=3
+	if [[ ! -z $1 ]]; then
+		n=$1
+	fi
+	git ls-remote --refs --tags --sort=version:refname origin v\* | tail -n ${n} | awk '{print $2}' | sed 's/refs\/tags\///'
 }
