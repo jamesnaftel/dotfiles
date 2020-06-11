@@ -91,3 +91,23 @@ ml-tags(){
 	fi
 	git ls-remote --refs --tags --sort=version:refname origin v\* | tail -n ${n} | awk '{print $2}' | sed 's/refs\/tags\///'
 }
+
+listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+        echo "Usage: listening [pattern]"
+    fi
+}
+
+dc-children(){
+	docker images -a -q --filter since=$1 | xargs docker inspect --format='{{.Id}} {{.Parent}}' | grep $1
+}
+
+dc-layers() {
+	local layers=$(docker inspect $1 | jq '.[].RootFS.Layers[]')
+	echo "layers"=$(echo $layers | wc -l)
+	echo $layers
+}
