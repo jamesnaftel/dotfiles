@@ -1,7 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$PATH:/usr/local/go/bin:${HOME}/.krew/bin"
-
+export PATH="$PATH:/usr/local/go/bin:${HOME}/.krew/bin:$HOME/.jenv/bin"
+eval "$(jenv init -)"
+jenv enable-plugin export
+jenv enable-plugin maven
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jamesnaftel/.oh-my-zsh"
@@ -125,3 +127,33 @@ bindkey '^A' history-substring-search-up
 bindkey '^B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+eval "$(pyenv init -)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jamesnaftel/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jamesnaftel/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/jamesnaftel/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jamesnaftel/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="/usr/local/sbin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+source $HOME/.zsh/colors

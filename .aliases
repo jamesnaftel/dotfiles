@@ -44,8 +44,14 @@ alias ybd="cd ~/dev/yourbase"
 
 # aws
 alias awsk='aws eks --region us-west-2 update-kubeconfig --name $1'
+alias aws='/usr/local/bin/aws'
+
+# heroku
+alias ybheroku-staging='heroku psql -a yb-yourbase-api-staging'
+alias ybheroku-preview='heroku psql -a yb-yourbase-api-preview'
+alias ybheroku-prod='heroku psql -a yb-api'
+alias ybheroku-certs='heroku apps | tail -n +2 | xargs -L 1 heroku certs -a'
 
 #yb
-alias ybheroku-staging='heroku psql -a yb-yourbase-api-staging'
-alias ybheroku-preview='heroku psql -a yb-yourbase-preview-api'
-alias ybheroku-prod='heroku psql -a yb-api'
+alias yb-dev='/Users/jamesnaftel/dev/yourbase/yb/yb'
+

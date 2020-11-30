@@ -8,3 +8,5 @@ export PATH="$PATH:$GOPATH/bin"
 
 # set color mode for hh
 export HH_CONFIG=hicolor,blacklist
+
+export HEROKU_ORGANIZATION=yourbase

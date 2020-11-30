@@ -2,6 +2,16 @@
 
 function viewmd() { pandoc -t plain "$1" | less; }
 
+function setStaging {
+	export YOURBASE_API_URL=https://api.staging.yourbase.io
+	export AWS_PROFILE=staging
+}
+
+function setProd {
+	export YOURBASE_API_URL=https://api.yourbase.io
+	export AWS_PROFILE=prod
+}
+
 # Use Git’s colored diff when available
 hash git &>/dev/null;
 if [ $? -eq 0 ]; then
@@ -110,4 +120,8 @@ dc-layers() {
 	local layers=$(docker inspect $1 | jq '.[].RootFS.Layers[]')
 	echo "layers"=$(echo $layers | wc -l)
 	echo $layers
+}
+
+killbuildagent() {
+	ps aux | grep buildagent | grep -v grep | head -n 1 | awk '{print $2}' | xargs kill -9
 }
