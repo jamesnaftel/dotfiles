@@ -1,9 +1,0 @@
-#"" bashrc
-#
-
-# Source dotfiles
-for file in ~/.{exports,aliases,functions,bash_config}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
-

@@ -1,4 +1,0 @@
-# for general bash settings that apply to both OSx and Linux
-
-
-set -o vi

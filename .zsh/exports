@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Common exports
-#
-#
+# General 
+export LANG=en_US.UTF-8
+export EDITOR='mvim'
+
+# Go
 export GOPATH=$HOME/dev/go
-export PATH="$PATH:$GOPATH/bin"
 
 # set color mode for hh
 export HH_CONFIG=hicolor,blacklist
