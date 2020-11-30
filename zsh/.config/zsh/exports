@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# General 
+export LANG=en_US.UTF-8
+export EDITOR='mvim'
+
+# Go
+export GOPATH=$HOME/dev/go
+
+# set color mode for hh
+export HH_CONFIG=hicolor,blacklist
+
+export HEROKU_ORGANIZATION=yourbase

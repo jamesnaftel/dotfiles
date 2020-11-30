@@ -1,0 +1,142 @@
+#!/bin/bash
+
+# Powerline functions
+function powerline_precmd() {
+    PS1="$($GOPATH/bin/powerline-go -error $? -shell zsh -modules ssh,cwd,perms,git,root -cwd-max-depth 2)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+# Helpers
+function viewmd() { pandoc -t plain "$1" | less; }
+
+function setStaging {
+	export YOURBASE_API_URL=https://api.staging.yourbase.io
+	export AWS_PROFILE=staging
+}
+
+function setProd {
+	export YOURBASE_API_URL=https://api.yourbase.io
+	export AWS_PROFILE=prod
+}
+
+# Use Git’s colored diff when available
+hash git &>/dev/null;
+if [ $? -eq 0 ]; then
+	function diff() {
+		git diff --no-index --color-words "$@";
+	}
+fi;
+
+# Git branch in prompt.
+function parse_git_branch() {
+	    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+# Make and enter a new dir
+mkd() {
+	mkdir -p "$@"
+	cd "$@"
+}
+
+# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression - thx jessfraz!
+targz() {
+	local tmpFile="${1%/}.tar"
+	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${1}" || return 1
+
+	size=$(
+	stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+	stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
+	)
+
+	local cmd=""
+	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+		# the .tar file is smaller than 50 MB and Zopfli is available; use it
+		cmd="zopfli"
+	else
+		if hash pigz 2> /dev/null; then
+			cmd="pigz"
+		else
+			cmd="gzip"
+		fi
+	fi
+
+	echo "Compressing .tar using \`${cmd}\`…"
+	"${cmd}" -v "${tmpFile}" || return 1
+	[ -f "${tmpFile}" ] && rm "${tmpFile}"
+	echo "${tmpFile}.gz created successfully."
+}
+
+# go to a folder easily in your gopath - thx jessfraz!
+gogo(){
+	local d=$1
+
+	if [[ -z $d ]]; then
+		echo "You need to specify a project name."
+		return 1
+	fi
+
+	if [[ "$d" == github* ]]; then
+		d=$(echo "$d" | sed 's/.*\///')
+	fi
+	d=${d%/}
+
+	# search for the project dir in the GOPATH
+	local path=( $(find "${GOPATH}/src" \( -type d -o -type l \) -iname "$d" 2>&1 | awk '{print length, $0;}' | head -1 | sort -n | awk '{print $2}') )
+
+	#if [ "${path[1]}" == "" ] || [ "${path[*]}" == "" ]; then
+	if [ ${#path[@]} -eq 0 ]; then
+		echo "Could not find a directory named $d in $GOPATH"
+		echo "Maybe you need to 'go get' it ;)"
+		return 1
+	fi
+
+	# enter the first path found
+	cd "${path[1]}" || return 1
+}
+
+podn(){
+    local label=$1
+	local ns=$2
+	 k get pod -l app=$label -n $ns -o jsonpath="{.items[0].metadata.name}"
+
+}
+
+ml-tags(){
+	local n=3
+	if [[ ! -z $1 ]]; then
+		n=$1
+	fi
+	git ls-remote --refs --tags --sort=version:refname origin v\* | tail -n ${n} | awk '{print $2}' | sed 's/refs\/tags\///'
+}
+
+listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+        echo "Usage: listening [pattern]"
+    fi
+}
+
+dc-children(){
+	docker images -a -q --filter since=$1 | xargs docker inspect --format='{{.Id}} {{.Parent}}' | grep $1
+}
+
+dc-layers() {
+	local layers=$(docker inspect $1 | jq '.[].RootFS.Layers[]')
+	echo "layers"=$(echo $layers | wc -l)
+	echo $layers
+}
+
+killbuildagent() {
+	ps aux | grep buildagent | grep -v grep | head -n 1 | awk '{print $2}' | xargs kill -9
+}

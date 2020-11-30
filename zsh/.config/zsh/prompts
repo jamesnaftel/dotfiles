@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# set prompts and colors
+#
+#
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+#export PS1="\[\033[01;33m\]>>> \[\033[01;35m\]\W\[\033[01;36m\]\$(parse_git_branch) \[\033[00;32m\]$ "
+
+function _update_ps1() {
+    PS1="$(~/dev/go/bin/powerline-go -error $? -modules ssh,cwd,perms,git,root -cwd-max-depth 2)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
