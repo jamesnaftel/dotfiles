@@ -14,8 +14,17 @@ function install_powerline_precmd() {
   precmd_functions+=(powerline_precmd)
 }
 
-# Helpers
-function viewmd() { pandoc -t plain "$1" | less; }
+# YB Helpers
+
+function setAgentJar {
+	export YB_AGENT_JAR=/Users/jamesnaftel/dev/yourbase/yourbase-java-engine/buildgraph-agent/target/buildgraph-agent-1.0-ALPHA.jar
+	echo "YB_AGENT_JAR: $YB_AGENT_JAR"
+}
+
+function unsetAgentJar {
+	unset YB_AGENT_JAR
+	echo "YB_AGENT_JAR cleared $YB_AGENT_JAR"
+}
 
 function setStaging {
 	export YOURBASE_API_URL=https://api.staging.yourbase.io
@@ -26,6 +35,9 @@ function setProd {
 	export YOURBASE_API_URL=https://api.yourbase.io
 	export AWS_PROFILE=prod
 }
+
+# Helpers
+function viewmd() { pandoc -t plain "$1" | less; }
 
 # Use Git’s colored diff when available
 hash git &>/dev/null;
