@@ -149,6 +149,12 @@ dc-layers() {
 	echo $layers
 }
 
+dc-all-image-layers(){
+	# Need to fix for mac.  Works super fantastic on linux
+	docker images | tail -n +2 | awk '{print $3}' | xargs -i sh -c "docker inspect {} | jq '.[].RootFS.Layers[]' | wc -l" | sort
+
+}
+
 killbuildagent() {
 	ps aux | grep buildagent | grep -v grep | head -n 1 | awk '{print $2}' | xargs kill -9
 }

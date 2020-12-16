@@ -10,7 +10,6 @@ lua require('lspconfig')
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-
 "colorscheme challenger_deep
 "let g:lightline = { 'colorscheme': 'challenger_deep' }
 
@@ -19,6 +18,8 @@ nnoremap <silent> <leader>q :Sayonara<CR>
 lua require'lspconfig'.pyls.setup{}
 lua require'lspconfig'.terraformls.setup{}
 lua require'colorizer'.setup()
+
+au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
 
 set completeopt-=preview
 
@@ -67,9 +68,6 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 command! -nargs=* -complete=help Help vertical belowright help <args>
 autocmd FileType help wincmd L
 
-" python indent
-autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
-
 " WildMenu completetion
 set wildmenu
 set wildmode=list:full
@@ -105,6 +103,11 @@ imap JK <ESC>l
 " never do this again --> :set paste <ctrl-v> :set no paste
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
+
+" Netrw settings
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 1
+let g:netrw_winsize = 25 "??
 
 " Lightline settings
 let g:lightline = {
