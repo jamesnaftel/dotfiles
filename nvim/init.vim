@@ -15,11 +15,11 @@ let g:mapleader = "\<Space>"
 
 nnoremap <silent> <leader>q :Sayonara<CR>
 
+lua require'lspconfig'.rust_analyzer.setup{}
 lua require'lspconfig'.pyls.setup{}
 lua require'lspconfig'.terraformls.setup{}
 lua require'colorizer'.setup()
 
-au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
 
 set completeopt-=preview
 
@@ -64,7 +64,7 @@ au FocusLost * :wa              " Set vim to save the file on focus out.
 
 filetype plugin indent on    " required
 set backspace=indent,eol,start  " Makes backspace key more powerful.
-
+	
 command! -nargs=* -complete=help Help vertical belowright help <args>
 autocmd FileType help wincmd L
 

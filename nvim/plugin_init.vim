@@ -23,19 +23,17 @@ call plug#begin('~/.config/nvim/plugged')
 "  Plug 'godlygeek/tabular'
 "  Plug 'janko/vim-test'
 "  Plug 'kshenoy/vim-signature'
-"
 
   Plug 'justinmk/vim-dirvish'
 
-
-"  " Hail Tpope
+  " Hail Tpope
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
-"
-"  " Neovim LSP Autocompletion, Diagnostic Stuff
-"  Plug 'neovim/nvim-lsp'
+
+  " Neovim LSP Autocompletion, Diagnostic Stuff
   Plug 'neovim/nvim-lspconfig'
+  Plug 'tjdevries/lsp_extensions.nvim'
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/diagnostic-nvim'
   Plug 'steelsojka/completion-buffers'
