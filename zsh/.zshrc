@@ -25,10 +25,14 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Python environment setup
-eval "$(pyenv init -)"
+if hash pyenv 2>/dev/null; then
+    # Python environment setup
+    eval "$(pyenv init -)"
+fi
 
-# Java environment setup
-eval "$(jenv init -)"
-jenv enable-plugin export
-jenv enable-plugin maven
+if hash penv 2>/dev/null; then
+    # Java environment setup
+    eval "$(jenv init -)"
+    jenv enable-plugin export
+    jenv enable-plugin maven
+fi
