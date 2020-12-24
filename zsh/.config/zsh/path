@@ -2,3 +2,5 @@ SYSTEM_PATH=$PATH
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/Users/jamesnaftel/dev/go/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:/Library/TeX/texbin"

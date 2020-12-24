@@ -30,9 +30,13 @@ if hash pyenv 2>/dev/null; then
     eval "$(pyenv init -)"
 fi
 
-if hash penv 2>/dev/null; then
+if hash jenv 2>/dev/null; then
     # Java environment setup
     eval "$(jenv init -)"
     jenv enable-plugin export
     jenv enable-plugin maven
+fi
+if hash rbenv 2>/dev/null; then
+    # Ruby environment setup
+    eval "$(rbenv init -)"
 fi

@@ -3,25 +3,27 @@ source $HOME/.config/nvim/plugin_init.vim
 "require(lspconfig)
 set termguicolors                  " Enable GUI colors for the terminal to get truecolor
 
+filetype plugin indent on    " required
+syntax enable
+
 " This must be loaded after we set termguicolors
 lua require('lspconfig')
-"lua require('init')
+
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-"colorscheme challenger_deep
-"let g:lightline = { 'colorscheme': 'challenger_deep' }
-
 nnoremap <silent> <leader>q :Sayonara<CR>
 
-lua require'lspconfig'.rust_analyzer.setup{}
+lua require'lspconfig'.rust_analyzer.setup({on_attach=require'completion'.on_attach})
 lua require'lspconfig'.pyls.setup{}
 lua require'lspconfig'.terraformls.setup{}
 lua require'colorizer'.setup()
 
-
 set completeopt-=preview
+"autocmd BufEnter * lua require'completion'.on_attach()
 
 autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -45,6 +47,7 @@ map q: :q
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+nnoremap <F6> :setlocal spell! spell?<CR>
 
 " Settings
 set noshowmode                  " We show the mode with airlien or lightline
@@ -62,9 +65,8 @@ set splitright                  " Split vertical windows right to the current wi
 set splitbelow                  " Split horizontal windows below to the current windows
 au FocusLost * :wa              " Set vim to save the file on focus out.
 
-filetype plugin indent on    " required
 set backspace=indent,eol,start  " Makes backspace key more powerful.
-	
+
 command! -nargs=* -complete=help Help vertical belowright help <args>
 autocmd FileType help wincmd L
 

@@ -17,14 +17,14 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mhinz/vim-sayonara'
   Plug 'itchyny/lightline.vim'
   Plug 'frazrepo/vim-rainbow'
-"  Plug 'bronson/vim-trailing-whitespace'
 "  Plug 'dylanaraps/wal.vim'
 "  Plug 'francoiscabrol/ranger.vim'
 "  Plug 'godlygeek/tabular'
 "  Plug 'janko/vim-test'
 "  Plug 'kshenoy/vim-signature'
-
+  Plug 'benmills/vimux'
   Plug 'justinmk/vim-dirvish'
+  Plug 'ntpeters/vim-better-whitespace'
 
   " Hail Tpope
   Plug 'tpope/vim-commentary'
@@ -36,7 +36,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tjdevries/lsp_extensions.nvim'
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/diagnostic-nvim'
-  Plug 'steelsojka/completion-buffers'
+  Plug 'tjdevries/lsp_extensions.nvim'
+  "Plug 'steelsojka/completion-buffers'
   Plug 'voldikss/vim-floaterm'
 
   " Sitting on the Top of a Tree
