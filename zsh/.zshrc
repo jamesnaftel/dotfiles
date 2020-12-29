@@ -36,6 +36,7 @@ if hash jenv 2>/dev/null; then
     jenv enable-plugin export
     jenv enable-plugin maven
 fi
+
 if hash rbenv 2>/dev/null; then
     # Ruby environment setup
     eval "$(rbenv init -)"

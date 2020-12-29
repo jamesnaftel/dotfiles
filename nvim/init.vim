@@ -10,6 +10,7 @@ syntax enable
 lua require('lspconfig')
 
 set completeopt=menuone,noinsert,noselect
+set completeopt-=preview
 set shortmess+=c
 
 let mapleader = "\<Space>"
@@ -20,10 +21,23 @@ nnoremap <silent> <leader>q :Sayonara<CR>
 lua require'lspconfig'.rust_analyzer.setup({on_attach=require'completion'.on_attach})
 lua require'lspconfig'.pyls.setup{}
 lua require'lspconfig'.terraformls.setup{}
+lua require'lspconfig'.solargraph.setup{}
 lua require'colorizer'.setup()
 
-set completeopt-=preview
-"autocmd BufEnter * lua require'completion'.on_attach()
+autocmd BufEnter * lua require'completion'.on_attach()
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+"g:completion_enable_auto_hover = 1
+"let g:UltiSnipsExpandTrigger = "<S-Tab>"
+"imap <tab> <Plug>(completion_smart_tab)
+"imap <s-tab> <Plug>(completion_smart_s_tab)
+
+" Set the python and ruby environment so I don't have to set it when I change the python version
+let g:python_host_prog = '/Users/jamesnaftel/.pyenv/versions/2.7.18/bin/python'
+let g:python3_host_prog = '/Users/jamesnaftel/.pyenv/versions/3.8.5/bin/python'
+let g:ruby_host_prog = '/Users/jamesnaftel/.rbenv/versions/2.7.2/bin/neovim-ruby-host'
 
 autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |

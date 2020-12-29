@@ -52,7 +52,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Colors and Whatnot
   Plug 'chriskempson/base16-vim'
   Plug 'norcalli/nvim-colorizer.lua'
-  Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+  "Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 
   " Terraform
