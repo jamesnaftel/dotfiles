@@ -1,69 +1,21 @@
 source $HOME/.config/nvim/plugin_init.vim
 
-"require(lspconfig)
 set termguicolors                  " Enable GUI colors for the terminal to get truecolor
 
-filetype plugin indent on    " required
+filetype plugin indent on
 syntax enable
 
 " This must be loaded after we set termguicolors
-lua require('lspconfig')
-
-set completeopt=menuone,noinsert,noselect
-set completeopt-=preview
-set shortmess+=c
+lua require('init')
 
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-nnoremap <silent> <leader>q :Sayonara<CR>
-
-lua require'lspconfig'.rust_analyzer.setup({on_attach=require'completion'.on_attach})
-lua require'lspconfig'.pyls.setup{}
-lua require'lspconfig'.terraformls.setup{}
-lua require'lspconfig'.solargraph.setup{}
-lua require'colorizer'.setup()
-
-autocmd BufEnter * lua require'completion'.on_attach()
-
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-"g:completion_enable_auto_hover = 1
-"let g:UltiSnipsExpandTrigger = "<S-Tab>"
-"imap <tab> <Plug>(completion_smart_tab)
-"imap <s-tab> <Plug>(completion_smart_s_tab)
-
-" Set the python and ruby environment so I don't have to set it when I change the python version
-let g:python_host_prog = '/Users/jamesnaftel/.pyenv/versions/2.7.18/bin/python'
-let g:python3_host_prog = '/Users/jamesnaftel/.pyenv/versions/3.8.5/bin/python'
-let g:ruby_host_prog = '/Users/jamesnaftel/.rbenv/versions/2.7.2/bin/neovim-ruby-host'
-
-autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \	exe "normal! g`\"" |
-      \ endif
-
-nmap <leader>w :w!<cr>
-
-" Close quickfix easily
-nnoremap <leader>a :cclose<CR>
-
-" Remove search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
-" Center the screen
-nnoremap <space> zz
-
-" Do not show stupid q: window
-map q: :q
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-
-nnoremap <F6> :setlocal spell! spell?<CR>
+autocmd BufEnter,BufWritePost *.rs lua require('lsp_extensions.inlay_hints').request { aligned = true, prefix = " » " }
 
 " Settings
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
 set noshowmode                  " We show the mode with airlien or lightline
 set noerrorbells                " No beeps
 set visualbell
@@ -78,7 +30,6 @@ set hidden
 set splitright                  " Split vertical windows right to the current windows
 set splitbelow                  " Split horizontal windows below to the current windows
 au FocusLost * :wa              " Set vim to save the file on focus out.
-
 set backspace=indent,eol,start  " Makes backspace key more powerful.
 
 command! -nargs=* -complete=help Help vertical belowright help <args>
@@ -87,7 +38,6 @@ autocmd FileType help wincmd L
 " WildMenu completetion
 set wildmenu
 set wildmode=list:full
-
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
@@ -100,6 +50,7 @@ set wildignore+=go/pkg                           " Go static files
 set wildignore+=go/bin                           " Go bin files
 set wildignore+=*.pyc                            " Python byte code
 
+" Text Options
 set wrap
 set textwidth=79
 set formatoptions=qrn1
@@ -112,9 +63,11 @@ if !exists(":DiffOrig")
 				\ | wincmd p | diffthis
 endif
 
-" Just go out in insert mode
-imap jk <ESC>l
-imap JK <ESC>l
+" Jump to valid line
+autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \	exe "normal! g`\"" |
+      \ endif
 
 " never do this again --> :set paste <ctrl-v> :set no paste
 let &t_SI .= "\<Esc>[?2004h"
@@ -124,93 +77,6 @@ let &t_EI .= "\<Esc>[?2004l"
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 1
 let g:netrw_winsize = 25 "??
-
-" Lightline settings
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste'],
-      \             [ 'fugitive', 'filename', 'modified', 'ctrlpmark' ],
-      \             [ 'go'] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [ 'go'] ],
-      \ },
-      \ 'component_function': {
-      \   'modified': 'LightLineModified',
-      "\   'filename': 'LightLineFilename',
-      \   'go': 'LightLineGo',
-      \   'fileformat': 'LightLineFileformat',
-      \   'filetype': 'LightLineFiletype',
-      \   'fileencoding': 'LightLineFileencoding',
-      \   'mode': 'LightLineMode',
-      \   'fugitive': 'LightLineFugitive',
-      \   'ctrlpmark': 'CtrlPMark',
-      \ },
-      \ }
-
-function! LightLineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineInfo()
-  return winwidth(0) > 60 ? printf("%3d:%-2d", line('.'), col('.')) : ''
-endfunction
-
-function! LightLinePercent()
-  return &ft =~? 'vimfiler' ? '' : (100 * line('.') / line('$')) . '%'
-endfunction
-
-function! LightLineFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! LightLineGo()
-  " return ''
-  return exists('*go#jobcontrol#Statusline') ? go#jobcontrol#Statusline() : ''
-endfunction
-
-function! LightLineMode()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? 'CtrlP' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! LightLineFilename()
-  let fname = expand('%:t')
-  if mode() == 't'
-    return ''
-  endif
-
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]')
-endfunction
 
 if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background

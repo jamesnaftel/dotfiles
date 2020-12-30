@@ -24,7 +24,7 @@ autocmd BufNewFile,BufReadPost *.scala setl shiftwidth=2 expandtab
 autocmd BufNewFile,BufReadPost *.md setl ts=4 sw=4 sts=4 expandtab
 
 " lua settings
-autocmd BufNewFile,BufRead *.lua setlocal noet ts=4 sw=4 sts=4
+autocmd BufNewFile,BufRead *.lua setlocal noet ts=2 sw=2 sts=2
 
 " Dockerfile settings
 autocmd FileType dockerfile set noexpandtab

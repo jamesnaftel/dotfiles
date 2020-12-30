@@ -8,7 +8,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
   " Snippets
-  "Plug 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
 
   " Go
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -17,11 +17,11 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mhinz/vim-sayonara'
   Plug 'itchyny/lightline.vim'
   Plug 'frazrepo/vim-rainbow'
-"  Plug 'dylanaraps/wal.vim'
-"  Plug 'francoiscabrol/ranger.vim'
-"  Plug 'godlygeek/tabular'
-"  Plug 'janko/vim-test'
-"  Plug 'kshenoy/vim-signature'
+  Plug 'dylanaraps/wal.vim'
+  Plug 'francoiscabrol/ranger.vim'
+  Plug 'godlygeek/tabular'
+  Plug 'janko/vim-test'
+  Plug 'kshenoy/vim-signature'
   Plug 'benmills/vimux'
   Plug 'justinmk/vim-dirvish'
   Plug 'ntpeters/vim-better-whitespace'
@@ -33,16 +33,14 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Neovim LSP Autocompletion, Diagnostic Stuff
   Plug 'neovim/nvim-lspconfig'
-  Plug 'tjdevries/lsp_extensions.nvim'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'nvim-lua/diagnostic-nvim'
   Plug 'tjdevries/lsp_extensions.nvim'
-  "Plug 'steelsojka/completion-buffers'
+  Plug 'steelsojka/completion-buffers'
   Plug 'voldikss/vim-floaterm'
 
   " Sitting on the Top of a Tree
-"  Plug 'nvim-treesitter/completion-treesitter'
-"  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/completion-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter'
 
   " Tele Pack
   Plug 'nvim-lua/plenary.nvim'
@@ -52,8 +50,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Colors and Whatnot
   Plug 'chriskempson/base16-vim'
   Plug 'norcalli/nvim-colorizer.lua'
-  "Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-
 
   " Terraform
   Plug 'hashivim/vim-terraform'
