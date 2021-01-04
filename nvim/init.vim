@@ -5,6 +5,10 @@ set termguicolors                  " Enable GUI colors for the terminal to get t
 filetype plugin indent on
 syntax enable
 
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
+
 " This must be loaded after we set termguicolors
 lua require('init')
 
@@ -77,7 +81,3 @@ let &t_EI .= "\<Esc>[?2004l"
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 1
 let g:netrw_winsize = 25 "??
-
-if filereadable(expand("~/.vimrc_background"))
-  source ~/.vimrc_background
-endif
