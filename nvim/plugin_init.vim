@@ -52,6 +52,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'norcalli/nvim-colorizer.lua'
 
   " Terraform
-  Plug 'hashivim/vim-terraform'
+  Plug 'hashivim/vim-hashicorp-tools'
   Plug 'hashicorp/terraform-ls'
 call plug#end()
