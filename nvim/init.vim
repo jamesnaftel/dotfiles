@@ -17,6 +17,8 @@ let g:mapleader = "\<Space>"
 
 autocmd BufEnter,BufWritePost *.rs lua require('lsp_extensions.inlay_hints').request { aligned = true, prefix = " » " }
 
+let g:os = substitute(system('uname'), "\n", "", "")
+
 " Settings
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
