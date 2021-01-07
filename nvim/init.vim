@@ -25,7 +25,7 @@ set shortmess+=c
 set noshowmode                  " We show the mode with airlien or lightline
 set noerrorbells                " No beeps
 set visualbell
-set number                      " Show line numbers
+set relativenumber
 set showcmd                     " Show me what I'm typing
 set ignorecase
 set smartcase
