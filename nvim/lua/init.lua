@@ -49,4 +49,14 @@ nvim_lsp.terraformls.setup({
   root_dir = nvim_lsp.util.root_pattern(".terraform", ".git");
 })
 
+-- Bash
+nvim_lsp.bashls.setup({
+		on_attach=on_attach_vim_plus_keymaps,
+})
+
+-- C/C++
+nvim_lsp.clangd.setup({
+		on_attach=on_attach_vim_plus_keymaps,
+})
+
 require'colorizer'.setup()
