@@ -25,6 +25,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'benmills/vimux'
   Plug 'justinmk/vim-dirvish'
   Plug 'ntpeters/vim-better-whitespace'
+  Plug 'jiangmiao/auto-pairs'
 
   " Hail Tpope
   Plug 'tpope/vim-commentary'
