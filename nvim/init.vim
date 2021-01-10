@@ -20,6 +20,7 @@ autocmd BufEnter,BufWritePost *.rs lua require('lsp_extensions.inlay_hints').req
 let g:os = substitute(system('uname'), "\n", "", "")
 
 " Settings
+set number relativenumber
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set noshowmode                  " We show the mode with airlien or lightline
@@ -29,7 +30,6 @@ set relativenumber
 set showcmd                     " Show me what I'm typing
 set ignorecase
 set smartcase
-set ruler
 set mouse+=a
 set autoindent
 set hidden
