@@ -41,3 +41,6 @@ if hash rbenv 2>/dev/null; then
     # Ruby environment setup
     eval "$(rbenv init -)"
 fi
+
+# Make sure /usr/local/bin is first in the path list
+PATH="/usr/local/bin:$PATH"
