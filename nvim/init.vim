@@ -15,7 +15,9 @@ lua require('init')
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-autocmd BufEnter,BufWritePost *.rs lua require('lsp_extensions.inlay_hints').request { aligned = true, prefix = " » " }
+autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require('lsp_extensions.inlay_hints').request{
+			\ aligned = true, prefix = " » ",
+			\ enabled = {"TypeHint", "ChainingHint", "ParameterHint"}}
 
 let g:os = substitute(system('uname'), "\n", "", "")
 

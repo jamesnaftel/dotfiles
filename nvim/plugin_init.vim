@@ -35,7 +35,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Neovim LSP Autocompletion, Diagnostic Stuff
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'tjdevries/lsp_extensions.nvim'
+  Plug 'nvim-lua/lsp_extensions.nvim'
   Plug 'steelsojka/completion-buffers'
   Plug 'voldikss/vim-floaterm'
 
