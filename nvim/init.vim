@@ -18,6 +18,7 @@ let g:mapleader = "\<Space>"
 autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require('lsp_extensions.inlay_hints').request{
 			\ aligned = true, prefix = " » ",
 			\ enabled = {"TypeHint", "ChainingHint", "ParameterHint"}}
+autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 let g:os = substitute(system('uname'), "\n", "", "")
 

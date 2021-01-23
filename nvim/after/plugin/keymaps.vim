@@ -40,3 +40,6 @@ nnoremap <silent> <leader>q :Sayonara<CR>
 " Just go out in insert mode
 imap jk <ESC>l
 imap JK <ESC>l
+
+nnoremap <Leader>q" ciw""<Esc>P
+nnoremap <Leader>q' ciw''<Esc>P
