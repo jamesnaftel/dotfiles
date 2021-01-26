@@ -10,9 +10,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Snippets
   Plug 'SirVer/ultisnips'
 
-  " Go
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
   " Misc
   Plug 'mhinz/vim-sayonara'
   Plug 'itchyny/lightline.vim'

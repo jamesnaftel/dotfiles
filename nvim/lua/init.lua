@@ -59,4 +59,9 @@ nvim_lsp.clangd.setup({
 		on_attach=on_attach_vim_plus_keymaps,
 })
 
+-- Go
+nvim_lsp.gopls.setup({
+		on_attach=on_attach_vim_plus_keymaps,
+})
+
 require'colorizer'.setup()

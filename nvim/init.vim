@@ -19,6 +19,7 @@ autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require
 			\ aligned = true, prefix = " » ",
 			\ enabled = {"TypeHint", "ChainingHint", "ParameterHint"}}
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()
 
 let g:os = substitute(system('uname'), "\n", "", "")
 
