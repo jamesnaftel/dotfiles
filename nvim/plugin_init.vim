@@ -23,6 +23,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'justinmk/vim-dirvish'
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'cespare/vim-toml'
 
   " Hail Tpope
   Plug 'tpope/vim-commentary'
