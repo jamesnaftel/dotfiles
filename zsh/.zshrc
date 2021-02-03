@@ -44,3 +44,9 @@ fi
 
 # Make sure /usr/local/bin is first in the path list
 PATH="/usr/local/bin:$PATH"
+
+RPROMPT='[%D{%L:%M:%S %p}]'
+TMOUT=1
+TRAPALRM() {
+    zle reset-prompt
+}
