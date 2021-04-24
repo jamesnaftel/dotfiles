@@ -15,35 +15,28 @@ lua require('init')
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 
-autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require('lsp_extensions.inlay_hints').request{
-			\ aligned = true, prefix = " » ",
-			\ enabled = {"TypeHint", "ChainingHint", "ParameterHint"}}
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync()
-
 let g:os = substitute(system('uname'), "\n", "", "")
 
-" Settings
+" Source lua files
+lua require('james.telescope')
+
+" Just tinkering
+lua require('tools')
+command! SayHi lua require'tools'.sayHi()
+
+"" Settings
 set number relativenumber
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 set noshowmode                  " We show the mode with airlien or lightline
-set noerrorbells                " No beeps
-set visualbell
-set relativenumber
-set showcmd                     " Show me what I'm typing
 set ignorecase
 set smartcase
 set mouse+=a
-set autoindent
-set hidden
-set splitright                  " Split vertical windows right to the current windows
-set splitbelow                  " Split horizontal windows below to the current windows
-au FocusLost * :wa              " Set vim to save the file on focus out.
-set backspace=indent,eol,start  " Makes backspace key more powerful.
+set splitright
+set splitbelow
+set noswapfile
 
 command! -nargs=* -complete=help Help vertical belowright help <args>
-autocmd FileType help wincmd L
 
 " WildMenu completetion
 set wildmenu
@@ -73,12 +66,6 @@ if !exists(":DiffOrig")
 				\ | wincmd p | diffthis
 endif
 
-" Jump to valid line
-autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \	exe "normal! g`\"" |
-      \ endif
-
 " never do this again --> :set paste <ctrl-v> :set no paste
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
@@ -87,3 +74,8 @@ let &t_EI .= "\<Esc>[?2004l"
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 1
 let g:netrw_winsize = 25 "??
+
+command! -range=% FormatXML <line1>,<line2>call DoFormatXML()
+
+nmap <silent> <leader>x :%FormatXML<CR>
+vmap <silent> <leader>x :FormatXML<CR>

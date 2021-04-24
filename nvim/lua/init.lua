@@ -1,16 +1,10 @@
 local nvim_lsp = require'lspconfig'
-local nvim_completion = require'completion'
-
-local on_attach_vim = function(client)
-  nvim_completion.on_attach(client)
-end
 
 local mapper = function(mode, key, result)
   vim.api.nvim_buf_set_keymap(0, mode, key, result, {noremap = true, silent = true})
 end
 
 local on_attach_vim_plus_keymaps = function(client)
-  on_attach_vim(client)
   mapper('n', '1gD',        '<cmd> lua vim.lsp.buf.type_definition()<CR>')
   mapper('n', '<leader>rn', '<cmd> lua vim.lsp.buf.rename()<CR>')
   mapper('n', '<c-k>',      '<cmd> lua vim.lsp.buf.signature_help()<CR>')
@@ -27,6 +21,7 @@ local on_attach_vim_plus_keymaps = function(client)
 end
 
 -- Python
+-- pip3 install 'python-language-server[all]'
 nvim_lsp.pyls.setup({
   on_attach=on_attach_vim_plus_keymaps
 })
@@ -46,6 +41,7 @@ nvim_lsp.solargraph.setup({
 nvim_lsp.terraformls.setup({
   on_attach=on_attach_vim_plus_keymaps,
   cmd = {"terraform-ls", "serve"},
+	filetypes = {"terraform", "hcl", "tf"},
   root_dir = nvim_lsp.util.root_pattern(".terraform", ".git");
 })
 
@@ -62,6 +58,48 @@ nvim_lsp.clangd.setup({
 -- Go
 nvim_lsp.gopls.setup({
 		on_attach=on_attach_vim_plus_keymaps,
+})
+
+nvim_lsp.jdtls.setup({
+		on_attach=on_attach_vim_plus_keymaps,
+		-- This is a hack that I need to revisit when I have time.
+		cmd = {"bash", "-c", "/Users/jamesnaftel/dev/git-env/envfiles/nvim/scripts/nvim-jdtls.sh"}
+})
+--[[
+-- To get builtin LSP running, do something like:
+-- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
+--require('nlua.lsp.nvim').setup(require('lspconfig'), {
+--  on_attach = custom_nvim_lspconfig_attach,
+--
+--  -- Include globals you want to tell the LSP are real :)
+----  globals = {
+----    -- Colorbuddy
+----    "Color", "c", "Group", "g", "s",
+----  }
+--})
+--]]
+require'compe'.setup({
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    --vsnip = true;
+  };
 })
 
 require'colorizer'.setup()

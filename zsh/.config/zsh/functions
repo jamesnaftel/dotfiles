@@ -158,3 +158,9 @@ dc-all-image-layers(){
 killbuildagent() {
 	ps aux | grep buildagent | grep -v grep | head -n 1 | awk '{print $2}' | xargs kill -9
 }
+
+function add-yb-gem (){
+	YB_GITHUB_TOKEN="$(cat ~/.config/tokenbot)"
+	bundle add yourbase-rspec --git "https://$YB_GITHUB_TOKEN:x-oauth-basic@github.com/yourbase/yourbase-rspec-skipper-engine.git"
+
+}

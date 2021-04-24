@@ -1,4 +1,3 @@
-
 if g:os == "Darwin"
 	" Set the python and ruby environment so I don't have to set it when I change the python version
 	let g:python_host_prog = '$HOME/.pyenv/versions/2.7.18/bin/python'

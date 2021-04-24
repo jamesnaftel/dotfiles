@@ -7,6 +7,8 @@ plugins=(git gitfast kubectl zsh_reload history-substring-search docker vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
+eval "$(direnv hook zsh)"
+
 source $HOME/.config/zsh/functions
 source $HOME/.config/zsh/exports
 source $HOME/.config/zsh/path
@@ -44,9 +46,3 @@ fi
 
 # Make sure /usr/local/bin is first in the path list
 PATH="/usr/local/bin:$PATH"
-
-RPROMPT='[%D{%L:%M:%S %p}]'
-TMOUT=1
-TRAPALRM() {
-    zle reset-prompt
-}

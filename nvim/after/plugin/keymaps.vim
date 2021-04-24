@@ -1,3 +1,5 @@
+" TODO(james) reorg this file
+
 nnoremap <C-x> :bnext<CR>
 nnoremap <C-z> :bprev<CR>
 
@@ -16,7 +18,10 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Easy save
-nmap <leader>w :w!<cr>
+nnoremap <leader>w :w!<cr>
+
+" Easy terminal
+nnoremap <leader>t :terminal<cr>
 
 " Close quickfix easily
 nnoremap <leader>a :cclose<CR>
@@ -43,3 +48,20 @@ imap JK <ESC>l
 
 nnoremap <Leader>q" ciw""<Esc>P
 nnoremap <Leader>q' ciw''<Esc>P
+
+" Vimux
+nnoremap <Leader>rs :call VimuxRunCommand("clear; " . fnamemodify(bufname(1), ':p'))<CR>
+nnoremap <Leader>vmd :call VimuxRunCommand("clear; asciidoctor " . expand("%:p") . "; open " . expand("%:p:r") . ".html")<CR>
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
+nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <Leader>vz :VimuxZoomRunner<CR>
+
+" Telescope settings
+nnoremap <leader>tf <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <silent><leader>tg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
+nnoremap <silent><leader>tp <cmd>lua require'telescope.builtin'.git_files{}<CR>
+nnoremap <silent><leader>fz <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find{}<CR>
+nnoremap <silent><leader>vv <cmd>lua require('telescope.builtin').find_files{ cwd = "$HOME/.config/nvim"}<CR>
+nnoremap <silent><leader>vr <cmd>lua require('telescope.builtin').live_grep{ cwd = "$HOME/.config/nvim"}<CR>
+nnoremap <leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ results_width=0.8}))<cr>

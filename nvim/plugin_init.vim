@@ -22,23 +22,26 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'benmills/vimux'
   Plug 'justinmk/vim-dirvish'
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'jiangmiao/auto-pairs'
+"  Plug 'jiangmiao/auto-pairs'
   Plug 'cespare/vim-toml'
+  "Plug 'tjdevries/nlua.nvim'
 
   " Hail Tpope
+  Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
 
   " Neovim LSP Autocompletion, Diagnostic Stuff
   Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/completion-nvim'
+  Plug 'hrsh7th/nvim-compe'
+  "Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/lsp_extensions.nvim'
-  Plug 'steelsojka/completion-buffers'
+  "Plug 'steelsojka/completion-buffers'
   Plug 'voldikss/vim-floaterm'
 
   " Sitting on the Top of a Tree
-  Plug 'nvim-treesitter/completion-treesitter'
+  "Plug 'nvim-treesitter/completion-treesitter'
   Plug 'nvim-treesitter/nvim-treesitter'
 
   " Tele Pack
@@ -53,4 +56,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Terraform
   Plug 'hashivim/vim-hashicorp-tools'
   Plug 'hashicorp/terraform-ls'
+
+  " Plugin for learning
+  Plug 'jamesnaftel/nvim-james-learn'
 call plug#end()
