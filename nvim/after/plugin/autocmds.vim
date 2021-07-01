@@ -15,7 +15,7 @@ autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync()
 autocmd BufNewFile,BufRead *.java setlocal noet ts=4 sw=4 sts=4
 
 " Ruby
-autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync()
+"autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync()
 autocmd BufNewFile,BufRead *.rb setlocal expandtab ts=2 sw=2
 
 " Python

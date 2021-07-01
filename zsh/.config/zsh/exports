@@ -2,7 +2,7 @@
 
 # General
 export LANG=en_US.UTF-8
-export EDITOR='mvim'
+export EDITOR='nvim'
 
 # Go
 export GOPATH=$HOME/dev/go
