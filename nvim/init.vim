@@ -36,6 +36,7 @@ set mouse+=a
 set splitright
 set splitbelow
 set noswapfile
+au FocusLost * :wa
 
 command! -nargs=* -complete=help Help vertical belowright help <args>
 

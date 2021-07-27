@@ -20,12 +20,12 @@ local on_attach_vim_plus_keymaps = function(client)
   mapper('n', '<Leader>]',         '<cmd>lua vim.lsp.strutures.Diagnostics.buf_move_prev_diagnostic()<CR>')
 end
 
--- Python
--- pip3 install 'python-language-server[all]'
-nvim_lsp.pyls.setup({
-  on_attach=on_attach_vim_plus_keymaps
-})
+vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
 
+-- Python
+nvim_lsp.pyright.setup({
+	on_attach=on_attach_vim_plus_keymaps,
+})
 -- Rust
 nvim_lsp.rust_analyzer.setup({
 	cmd = {"rust-analyzer"},
