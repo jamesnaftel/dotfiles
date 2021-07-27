@@ -42,7 +42,8 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Sitting on the Top of a Tree
   "Plug 'nvim-treesitter/completion-treesitter'
-  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
 
   " Tele Pack
   Plug 'nvim-lua/plenary.nvim'
