@@ -65,6 +65,27 @@ nvim_lsp.jdtls.setup({
 		-- This is a hack that I need to revisit when I have time.
 		cmd = {"bash", "-c", "/Users/jamesnaftel/dev/git-env/envfiles/nvim/scripts/nvim-jdtls.sh"}
 })
+
+-- efm-langserver
+--    Using for python formatting
+require "lspconfig".efm.setup {
+    init_options = {documentFormatting = true},
+		filetypes = {"python","lua","json"},
+    settings = {
+        rootMarkers = {".git/"},
+        languages = {
+            lua = {
+                {formatCommand = "lua-format -i", formatStdin = true}
+            },
+						--python = {
+						--		{formatCommand = "black --quiet -", formatStdin = true}
+						--},
+						json = {
+								{formatCommand = "jq", formatStdin = true}
+						},
+        }
+    }
+}
 --[[
 -- To get builtin LSP running, do something like:
 -- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`

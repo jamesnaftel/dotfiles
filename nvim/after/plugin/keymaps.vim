@@ -21,7 +21,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <leader>w :w!<cr>
 
 " Easy terminal
-nnoremap <leader>t :terminal<cr>
+nnoremap <leader>tt :terminal<cr>
 
 " Close quickfix easily
 nnoremap <leader>a :cclose<CR>

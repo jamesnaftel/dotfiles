@@ -36,6 +36,7 @@ set mouse+=a
 set splitright
 set splitbelow
 set noswapfile
+set hidden
 au FocusLost * :wa
 
 command! -nargs=* -complete=help Help vertical belowright help <args>
@@ -59,6 +60,11 @@ set wildignore+=*.pyc                            " Python byte code
 set wrap
 set textwidth=79
 set formatoptions=qrn1
+
+set foldlevel=20
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+hi ColorColumn ctermbg=lightcyan guibg=blue
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.

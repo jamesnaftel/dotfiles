@@ -40,7 +40,6 @@ alias depgraph='dep status -dot | dot -T png | open -f -a /Applications/Preview.
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias glt='git log $(git describe --tags --abbrev=0)..HEAD --oneline'
 alias gom="export GO111MODULE=on"
-alias ybd="cd ~/dev/yourbase"
 
 # aws
 alias awsk='aws eks --region us-west-2 update-kubeconfig --name $1'
@@ -54,6 +53,8 @@ alias ybheroku-certs='heroku apps | tail -n +2 | xargs -L 1 heroku certs -a'
 
 #yb
 alias yb-dev='/Users/jamesnaftel/dev/yourbase/yb/yb'
+alias ybd="cd ~/dev/yourbase"
+alias ybc='/Users/jamesnaftel/dev/yourbase/utils/clear_graphs.sh'
 
 #nvim
 alias v='nvim '
