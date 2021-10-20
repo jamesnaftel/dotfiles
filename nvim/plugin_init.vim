@@ -11,44 +11,48 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'SirVer/ultisnips'
 
   " Misc
+  Plug 'kshenoy/vim-signature'
   Plug 'mhinz/vim-sayonara'
   Plug 'itchyny/lightline.vim'
   Plug 'frazrepo/vim-rainbow'
-  Plug 'dylanaraps/wal.vim'
-  Plug 'francoiscabrol/ranger.vim'
-  Plug 'godlygeek/tabular'
   Plug 'janko/vim-test'
-  Plug 'kshenoy/vim-signature'
   Plug 'benmills/vimux'
   Plug 'justinmk/vim-dirvish'
   Plug 'ntpeters/vim-better-whitespace'
-"  Plug 'jiangmiao/auto-pairs'
   Plug 'cespare/vim-toml'
-  "Plug 'tjdevries/nlua.nvim'
+  Plug 'numToStr/Comment.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
 
   " Hail Tpope
-  Plug 'tpope/vim-dispatch'
-  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-dispatch', {'do': 'make'}
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
 
   " Neovim LSP Autocompletion, Diagnostic Stuff
+  Plug 'tjdevries/nlua.nvim'
   Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-compe'
-  "Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-lua/lsp_extensions.nvim'
-  "Plug 'steelsojka/completion-buffers'
   Plug 'voldikss/vim-floaterm'
 
+  " Completion
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-nvim-lua'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'onsails/lspkind-nvim'
+
   " Sitting on the Top of a Tree
-  "Plug 'nvim-treesitter/completion-treesitter'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
 
-  " Tele Pack
+  " Telescope
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
 
   " Colors and Whatnot
   Plug 'chriskempson/base16-vim'
@@ -60,4 +64,8 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Plugin for learning
   Plug 'jamesnaftel/nvim-james-learn'
+
+  " To look at
+  " https://github.com/nvim-lua/lsp-status.nvim
+  " https://github.com/ericpubu/lsp_codelens_extensions.nvim
 call plug#end()

@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-plugins=(git gitfast kubectl zsh_reload history-substring-search docker vi-mode)
+plugins=(git gitfast kubectl history-substring-search docker vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,4 +60,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

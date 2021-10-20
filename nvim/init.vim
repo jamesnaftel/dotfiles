@@ -20,6 +20,7 @@ let g:os = substitute(system('uname'), "\n", "", "")
 " Source lua files
 lua require('james.telescope')
 lua require('james.treesitter')
+lua require('james.cmp')
 
 " Just tinkering
 lua require('tools')
