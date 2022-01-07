@@ -108,3 +108,5 @@ require('Comment').setup()
 
 lspkind = require('lspkind')
 lspkind.init()
+
+vim.g.snippets = "luasnip"
