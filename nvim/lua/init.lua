@@ -63,45 +63,10 @@ nvim_lsp.gopls.setup({
 	on_attach=on_attach_vim_plus_keymaps,
 })
 
-nvim_lsp.jdtls.setup({
-		on_attach=on_attach_vim_plus_keymaps,
-		-- This is a hack that I need to revisit when I have time.
-		cmd = {"bash", "-c", "/Users/jamesnaftel/dev/git-env/envfiles/nvim/scripts/nvim-jdtls.sh"}
+-- JS and TS
+nvim_lsp.tsserver.setup({
+	on_attach=on_attach_vim_plus_keymaps,
 })
-
--- efm-langserver
---    Using for python formatting
-nvim_lsp.efm.setup {
-    init_options = {documentFormatting = true},
-		filetypes = {"python","lua","json"},
-    settings = {
-        rootMarkers = {".git/"},
-        languages = {
-            lua = {
-                {formatCommand = "lua-format -i", formatStdin = true}
-            },
-						--python = {
-						--		{formatCommand = "black --quiet -", formatStdin = true}
-						--},
-						json = {
-								{formatCommand = "jq", formatStdin = true}
-						},
-        }
-    }
-}
---[[
--- To get builtin LSP running, do something like:
--- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
---require('nlua.lsp.nvim').setup(require('lspconfig'), {
---  on_attach = custom_nvim_lspconfig_attach,
---
---  -- Include globals you want to tell the LSP are real :)
-----  globals = {
-----    -- Colorbuddy
-----    "Color", "c", "Group", "g", "s",
-----  }
---})
---]]
 
 require('colorizer').setup()
 require('Comment').setup()

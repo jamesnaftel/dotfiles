@@ -26,6 +26,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Hail Tpope
   Plug 'tpope/vim-dispatch', {'do': 'make'}
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
   Plug 'tpope/vim-surround'
 
   " Neovim LSP Autocompletion, Diagnostic Stuff

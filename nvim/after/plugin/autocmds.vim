@@ -39,14 +39,13 @@ autocmd BufNewFile,BufRead *.sh setlocal expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.rkt setlocal expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.scala setlocal shiftwidth=2 expandtab
 autocmd BufNewFile,BufRead *.lua setlocal noet ts=2 sw=2 sts=2
+autocmd BufNewFile,BufRead *.sql setlocal expandtab ts=2 sw=2
 
 " Dockerfile settings
 autocmd FileType dockerfile set noexpandtab
 
 " js settings TODO: fix
-autocmd BufNewFile,BufRead *.js setlocal tabstop=4 softtabstop=8
 autocmd BufNewFile,BufRead *.js setlocal expandtab ts=2 sw=2
-autocmd FileType javascript syntax clear jsFuncBlock jsFuncArgs
 
 " shell/config/systemd settings
 autocmd FileType fstab,systemd set noexpandtab

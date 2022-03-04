@@ -1,3 +1,5 @@
+-- https://www.nerdfonts.com/font-downloads
+
 
 local actions = require('telescope.actions')
 local sorters = require('telescope.sorters')

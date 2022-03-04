@@ -14,38 +14,16 @@ function install_powerline_precmd() {
   precmd_functions+=(powerline_precmd)
 }
 
-# YB Helpers
-
-function setAgentJar {
-	export YB_AGENT_JAR=/Users/jamesnaftel/dev/yourbase/yourbase-java-engine/buildgraph-agent/target/buildgraph-agent-1.0-ALPHA.jar
-	echo "YB_AGENT_JAR: $YB_AGENT_JAR"
-}
-
-function unsetAgentJar {
-	unset YB_AGENT_JAR
-	echo "YB_AGENT_JAR cleared $YB_AGENT_JAR"
-}
-
-function setStaging {
-	export YOURBASE_API_URL=https://api.staging.yourbase.io
-	export AWS_PROFILE=staging
-}
-
-function setProd {
-	export YOURBASE_API_URL=https://api.yourbase.io
-	export AWS_PROFILE=prod
-}
-
 # Helpers
 function viewmd() { pandoc -t plain "$1" | less; }
 
 # Use Git’s colored diff when available
-#hash git &>/dev/null;
-#if [ $? -eq 0 ]; then
-#	function diff() {
-#		git diff --color-words "$@";
-#	}
-#fi;
+hash git &>/dev/null;
+if [ $? -eq 0 ]; then
+	function diff() {
+		git diff --color-words "$@";
+	}
+fi;
 
 # Git branch in prompt.
 function parse_git_branch() {
@@ -139,21 +117,18 @@ listening() {
     fi
 }
 
-dc-children(){
-	docker images -a -q --filter since=$1 | xargs docker inspect --format='{{.Id}} {{.Parent}}' | grep $1
+function nvimvenv {
+  if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
+    source "$VIRTUAL_ENV/bin/activate"
+    command nvim $@
+    deactivate
+  else
+    command nvim $@
+  fi
 }
 
-dc-layers() {
-	local layers=$(docker inspect $1 | jq '.[].RootFS.Layers[]')
-	echo "layers"=$(echo $layers | wc -l)
-	echo $layers
-}
 
-dc-all-image-layers(){
-	# Need to fix for mac.  Works super fantastic on linux
-	docker images | tail -n +2 | awk '{print $3}' | xargs -i sh -c "docker inspect {} | jq '.[].RootFS.Layers[]' | wc -l" | sort
 
-}
 
 killbuildagent() {
 	ps aux | grep buildagent | grep -v grep | head -n 1 | awk '{print $2}' | xargs kill -9
