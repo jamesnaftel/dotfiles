@@ -26,6 +26,7 @@ vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnos
 nvim_lsp.pyright.setup({
 	capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	on_attach=on_attach_vim_plus_keymaps,
+	filetypes = {"python"}
 })
 -- Rust
 nvim_lsp.rust_analyzer.setup({
@@ -66,6 +67,22 @@ nvim_lsp.gopls.setup({
 -- JS and TS
 nvim_lsp.tsserver.setup({
 	on_attach=on_attach_vim_plus_keymaps,
+})
+
+require("neotest").setup({
+  adapters = {
+    require("neotest-python")({
+      dap = { justMyCode = false },
+    }),
+    -- require("neotest-plenary"),
+    --require("neotest-vim-test")({
+    --  ignore_file_types = { "python", "vim", "lua" },
+    --}),
+  },
+	output = {
+		enabled = true,
+		open_on_run = "short"
+	},
 })
 
 require('colorizer').setup()

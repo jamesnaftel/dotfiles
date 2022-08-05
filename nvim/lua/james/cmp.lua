@@ -1,16 +1,15 @@
 local cmp = require 'cmp'
 
 cmp.setup {
-	mapping = {
+	mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Insert,
 			select = true
 		}),
-  },
+  }),
 	sources = {
 		{
 			name = 'nvim_lua'
@@ -46,8 +45,8 @@ cmp.setup {
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-  experimental = {
+  view = {
     -- I like the new menu better! Nice work hrsh7th
-    native_menu = false,
+    entries = 'native',
   },
 }

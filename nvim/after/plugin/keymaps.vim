@@ -60,7 +60,9 @@ nnoremap <Leader>vz :VimuxZoomRunner<CR>
 " Telescope settings
 nnoremap <leader>tf <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <silent><leader>tg <cmd>lua require'telescope.builtin'.live_grep{}<CR>
-nnoremap <silent><leader>tp <cmd>lua require'telescope.builtin'.git_files{}<CR>
+nnoremap <silent><leader>tp <cmd>lua require'telescope.builtin'.live_grep{ type_filter = "py" }<CR>
+nnoremap <silent><leader>ts <cmd>lua require'telescope.builtin'.grep_string{}<CR>
+nnoremap <silent><leader>tgp <cmd>lua require'telescope.builtin'.git_files{}<CR>
 nnoremap <silent><leader>fz <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find{}<CR>
 nnoremap <silent><leader>vv <cmd>lua require('telescope.builtin').find_files{ cwd = "$HOME/.config/nvim"}<CR>
 nnoremap <silent><leader>vr <cmd>lua require('telescope.builtin').live_grep{ cwd = "$HOME/.config/nvim"}<CR>

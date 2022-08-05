@@ -44,8 +44,15 @@ autocmd BufNewFile,BufRead *.sql setlocal expandtab ts=2 sw=2
 " Dockerfile settings
 autocmd FileType dockerfile set noexpandtab
 
-" js settings TODO: fix
-autocmd BufNewFile,BufRead *.js setlocal expandtab ts=2 sw=2
+" js settings
+autocmd BufNewFile,BufRead *.js,*.jsx,*.ts setlocal expandtab ts=2 sw=2
+
+" html settings
+autocmd BufNewFile,BufRead *.html setlocal expandtab ts=2 sw=2
+
+" template settings
+autocmd BufNewFile,BufRead *.tpl,*.j2 setlocal filetype=html
+autocmd BufNewFile,BufRead *.tpl,*.j2 setlocal expandtab ts=2 sw=2
 
 " shell/config/systemd settings
 autocmd FileType fstab,systemd set noexpandtab

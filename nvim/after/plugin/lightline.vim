@@ -58,7 +58,7 @@ function! LightLinePercent()
 endfunction
 
 function! LightLineFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
+  return exists('FugitiveHead') ? FugitiveHead() : ''
 endfunction
 
 function! LightLineGo()

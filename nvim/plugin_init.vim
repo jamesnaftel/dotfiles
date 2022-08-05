@@ -22,6 +22,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'cespare/vim-toml'
   Plug 'numToStr/Comment.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'mfussenegger/nvim-dap'
+  " needed for neotest
+  Plug 'antoinemadec/FixCursorHold.nvim'
 
   " Hail Tpope
   Plug 'tpope/vim-dispatch', {'do': 'make'}
@@ -66,6 +69,11 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Plugin for learning
   Plug 'jamesnaftel/nvim-james-learn'
+
+  " Testing
+  Plug 'rcarriga/neotest-python'
+  Plug 'rcarriga/neotest'
+
 
   " To look at
   " https://github.com/nvim-lua/lsp-status.nvim
