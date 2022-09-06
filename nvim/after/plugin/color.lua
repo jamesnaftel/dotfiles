@@ -1,6 +1,17 @@
-vim.g.tokyonight_colors = { comment = "#f8660d", border = "yellow" }
-vim.g.tokyonight_style = "night"
-vim.cmd("colorscheme tokyonight")
+-- vim.g.tokyonight_style = "night"
+-- vim.cmd("colorscheme tokyonight")
+-- vim.g.tokyonight_colors = { comment = "#f8660d", border = "yellow" }
+--
+vim.cmd[[colorscheme tokyonight]]
+
+require("tokyonight").setup({
+  -- use the night style
+  style = "night",
+  -- disable italic for functions
+  styles = {
+    functions = "NONE"
+  },
+})
 
 function SetMyColors()
     local hl = function(thing, opts)

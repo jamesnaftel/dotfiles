@@ -79,16 +79,6 @@ _G.packer_plugins = {
     path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["material.nvim"] = {
-    loaded = true,
-    path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/material.nvim",
-    url = "https://github.com/marko-cerovac/material.nvim"
-  },
-  nvim = {
-    loaded = true,
-    path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/nvim",
-    url = "https://github.com/catppuccin/nvim"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",

@@ -5,10 +5,13 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use 'neovim/nvim-lspconfig'
-  use 'nvim-lualine/lualine.nvim'
+  use 'folke/tokyonight.nvim'
 
-  use 'nvim-treesitter/nvim-treesitter'
+  -- Treesitter setup
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+  }
   use 'nvim-treesitter/nvim-treesitter-context'
 
   -- Telescop setup
@@ -19,9 +22,10 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
 
-  use 'marko-cerovac/material.nvim'
+  use 'neovim/nvim-lspconfig'
+  use 'nvim-lualine/lualine.nvim'
 
-  use 'folke/tokyonight.nvim'
+  -- Misc
+  use 'ntpeters/vim-better-whitespace'
 
-  use 'catppuccin/nvim'
 end)
