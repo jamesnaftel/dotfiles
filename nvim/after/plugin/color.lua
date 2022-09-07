@@ -1,17 +1,8 @@
--- vim.g.tokyonight_style = "night"
--- vim.cmd("colorscheme tokyonight")
--- vim.g.tokyonight_colors = { comment = "#f8660d", border = "yellow" }
---
-vim.cmd[[colorscheme tokyonight]]
-
 require("tokyonight").setup({
-  -- use the night style
-  style = "night",
-  -- disable italic for functions
-  styles = {
-    functions = "NONE"
-  },
+    terminal_colors = true,
 })
+
+local colors = require("tokyonight.colors").setup() -- pass in any of the config options as explained above
 
 function SetMyColors()
     local hl = function(thing, opts)
@@ -22,20 +13,29 @@ function SetMyColors()
         bg = "none",
     })
 
-   hl("ColorColumn", {
-       ctermbg = 0,
-       bg = "#555555",
-   })
+    hl("ColorColumn", {
+        ctermbg = 0,
+        bg = "#555555",
+    })
 
     hl("CursorLineNR", {
         bg = "None",
-	fg = "#f8660d"
+	    fg = colors.orange
     })
 
     hl("LineNr", {
-        fg = "#f8660d"
+        fg = colors.orange
+    })
+
+    hl("Comment", {
+        fg = colors.orange -- "#f8660d"
+    })
+
+    hl("FloatBorder", {
+        fg = colors.red
     })
 end
 
+vim.cmd[[colorscheme tokyonight-night]]
 SetMyColors()
 

@@ -43,12 +43,3 @@ nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
 nnoremap("<C-h>", "<C-w>h")
 nnoremap("<C-l>", "<C-w>l")
-
--- Vimux
--- nnoremap <Leader>rs :call VimuxRunCommand("clear; " . fnamemodify(bufname(1), ':p'))<CR>
--- nnoremap <Leader>vmd :call VimuxRunCommand("clear; asciidoctor " . expand("%:p") . "; open " . expand("%:p:r") . ".html")<CR>
--- nnoremap <Leader>vp :VimuxPromptCommand<CR>
--- nnoremap <Leader>vl :VimuxRunLastCommand<CR>
--- nnoremap <Leader>vi :VimuxInspectRunner<CR>
--- nnoremap <Leader>vz :VimuxZoomRunner<CR>
-
