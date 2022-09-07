@@ -8,7 +8,7 @@ nnoremap("-", "<cmd>:Ex<CR>")
 -- nnoremap("<leader>ex", "<cmd>:Ex<CR>")
 
 nnoremap("<leader>ev", ":vsplit $MYVIMRC<CR>")
-nnoremap("<leader>sv", ":source $MYVIMRC<CR>")
+nnoremap("<leader>sv", ":luafile $MYVIMRC<CR>")
 
 -- Easy save
 nnoremap("<leader>w", ":w!<CR>")
@@ -33,10 +33,8 @@ nnoremap("<leader>sp", ":setlocal spell! spell?<CR>")
 -- Just go out in insert mode
 inoremap("jk", "<ESC>l")
 
-
+-- Markdown previewer
 nnoremap("<leader>mp", ":MarkdownPreviewToggle<CR>")
-
-nnoremap("<leader>q", ":bd<CR>")
 
 -- Move Split Panes with more Vimlike Motions
 nnoremap("<C-j>", "<C-w>j")

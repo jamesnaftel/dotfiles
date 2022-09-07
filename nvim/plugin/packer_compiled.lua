@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -130,6 +135,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
+  ["marks.nvim"] = {
+    loaded = true,
+    path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/marks.nvim",
+    url = "https://github.com/chentoast/marks.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -181,10 +191,10 @@ _G.packer_plugins = {
     path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
-  ["vim-better-whitespace"] = {
+  ["vim-sayonara"] = {
     loaded = true,
-    path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
-    url = "https://github.com/ntpeters/vim-better-whitespace"
+    path = "/Users/jamesnaftel/.local/share/nvim/site/pack/packer/start/vim-sayonara",
+    url = "https://github.com/mhinz/vim-sayonara"
   },
   vimux = {
     loaded = true,

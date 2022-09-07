@@ -26,9 +26,11 @@ return require('packer').startup(function(use)
 
     -- Misc
     use 'nvim-lualine/lualine.nvim'
-    use 'ntpeters/vim-better-whitespace'
+    -- use 'ntpeters/vim-better-whitespace'
     use 'benmills/vimux'
     use 'numToStr/Comment.nvim'
+    use 'mhinz/vim-sayonara'
+    use 'chentoast/marks.nvim'
 
     -- Completion
     use "onsails/lspkind-nvim"
@@ -40,7 +42,6 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lsp-document-symbol'
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
-
     use 'rafamadriz/friendly-snippets'
 
     -- Markdown

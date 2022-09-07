@@ -1,14 +1,6 @@
 local status, nvim_lsp = pcall(require, 'lspconfig')
 if (not status) then return end
 
-local M = {}
-M.format_open_float = function()
-    vim.diagnostic.open_float({
-        scope = "line",
-        border = "double"
-    })
-end
-
 local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -28,8 +20,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', '<space>dp', vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set('n', '<space>dn', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '<space>dl', vim.diagnostic.setloclist, bufopts)
-    vim.keymap.set('n', '<space>do', M.format_open_float, bufopts)
-    vim.keymap.set('n', '<space>dx', vim.diagnostic.open_float, bufopts)
+    vim.keymap.set('n', '<space>do', vim.diagnostic.open_float, bufopts)
     vim.keymap.set('n', '<space>ff',function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 

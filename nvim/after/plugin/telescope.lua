@@ -1,3 +1,9 @@
+require('telescope').setup({
+    defaults = {
+        prompt_prefix = ' >> ',
+    }
+})
+
 local nnoremap = require("james.keymap").nnoremap
 
 --  Telescope settings
