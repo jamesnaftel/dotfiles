@@ -18,7 +18,6 @@ source $HOME/.config/zsh/prompts
 
 FX_FUNCTIONS=$HOME/.config/zsh/fx_functions
 if [[ -f "$FX_FUNCTIONS" ]]; then
-    echo "$$$$$$$$"
     source "$FX_FUNCTIONS"
 fi
 
@@ -34,7 +33,7 @@ bindkey -M vicmd 'j' history-substring-search-down
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Make sure /usr/local/bin is first in the path list
-PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 # Python environment setup
 eval "$(pyenv init --path)"
@@ -44,6 +43,4 @@ eval "$(pyenv virtualenv-init -)"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
 
-
-echo "-----------------------"
 
