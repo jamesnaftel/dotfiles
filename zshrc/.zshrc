@@ -16,6 +16,12 @@ source $HOME/.config/zsh/colors
 source $HOME/.config/zsh/aliases
 source $HOME/.config/zsh/prompts
 
+FX_FUNCTIONS=$HOME/.config/zsh/fx_functions
+if [[ -f "$FX_FUNCTIONS" ]]; then
+    echo "$$$$$$$$"
+    source "$FX_FUNCTIONS"
+fi
+
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
@@ -27,18 +33,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-if hash jenv 2>/dev/null; then
-    # Java environment setup
-    eval "$(jenv init -)"
-    jenv enable-plugin export
-    jenv enable-plugin maven
-fi
-
-if hash rbenv 2>/dev/null; then
-    # Ruby environment setup
-    eval "$(rbenv init -)"
-fi
-
 # Make sure /usr/local/bin is first in the path list
 PATH="/usr/local/bin:$PATH"
 
@@ -46,17 +40,10 @@ PATH="/usr/local/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/jamesnaftel/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/jamesnaftel/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/jamesnaftel/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/jamesnaftel/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+
+
+echo "-----------------------"
+
