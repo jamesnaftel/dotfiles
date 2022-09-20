@@ -26,11 +26,11 @@ return require('packer').startup(function(use)
 
     -- Misc
     use 'nvim-lualine/lualine.nvim'
-    -- use 'ntpeters/vim-better-whitespace'
     use 'benmills/vimux'
     use 'numToStr/Comment.nvim'
     use 'mhinz/vim-sayonara'
     use 'chentoast/marks.nvim'
+    use 'tpope/vim-fugitive'
 
     -- Completion
     use "onsails/lspkind-nvim"
