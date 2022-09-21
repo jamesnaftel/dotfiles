@@ -21,6 +21,11 @@ if [[ -f "$FX_FUNCTIONS" ]]; then
     source "$FX_FUNCTIONS"
 fi
 
+FX_ALIASES=$HOME/.config/zsh/fx_aliases
+if [[ -f "$FX_ALIASES" ]]; then
+    source "$FX_ALIASES"
+fi
+
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
