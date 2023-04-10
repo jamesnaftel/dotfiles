@@ -28,9 +28,57 @@ return require('packer').startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'benmills/vimux'
     use 'numToStr/Comment.nvim'
-    use 'mhinz/vim-sayonara'
     use 'chentoast/marks.nvim'
     use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
+    use 'simrat39/rust-tools.nvim'
+    use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
+    use 'norcalli/nvim-colorizer.lua'
+    use 'glepnir/lspsaga.nvim'
+
+    -- ChatGPT
+    use({
+        "jackMort/ChatGPT.nvim",
+            config = function()
+                require("chatgpt").setup({
+                    keymaps = {
+                        submit = "<C-t>"
+                    }
+                })
+            end,
+            requires = {
+              "MunifTanjim/nui.nvim",
+              "nvim-lua/plenary.nvim",
+              "nvim-telescope/telescope.nvim"
+            }
+    })
+
+    -- Github Copilot
+    use {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      after = "nvim-lspconfig",
+      config = function()
+        print()
+        require("copilot").setup({
+          panel = {
+              enabled = false,
+              keymap = {
+                  accept = "<CR>",
+                  refresh = "<leader> gr"
+              },
+              layout = {
+                  position = "bottom",
+                  ratio = 0.4,
+              }
+          },
+          suggestions = { enabled = false, }
+        })
+      end,
+    }
+
 
     -- Completion
     use "onsails/lspkind-nvim"
@@ -43,6 +91,13 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
     use 'rafamadriz/friendly-snippets'
+    use {
+      "zbirenbaum/copilot-cmp",
+      after = { "copilot.lua" },
+      config = function ()
+        require("copilot_cmp").setup()
+      end
+    }
 
     -- Markdown
     use {

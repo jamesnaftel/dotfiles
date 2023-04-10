@@ -1,14 +1,18 @@
-require('telescope').setup({
+local status, telescope = pcall(require, "telescope")
+if (not status) then return end
+
+telescope.setup({
     defaults = {
         prompt_prefix = ' >> ',
     }
 })
 
 local nnoremap = require("james.keymap").nnoremap
+local builtin = require('telescope.builtin')
 
 --  Telescope settings
+vim.keymap.set('n', "<leader>tg", builtin.live_grep, {}) -- better?
 nnoremap("<leader>tf", 	"<cmd>lua require('telescope.builtin').find_files()<CR>")
-nnoremap("<leader>tg", 	"<cmd>lua require('telescope.builtin').live_grep{}<CR>")
 nnoremap("<leader>tp", 	"<cmd>lua require('telescope.builtin').live_grep{ type_filter = 'py' }<CR>")
 nnoremap("<leader>ts", 	"<cmd>lua require('telescope.builtin').grep_string{}<CR>")
 nnoremap("<leader>tgp", "<cmd>lua require('telescope.builtin').git_files{}<CR>")

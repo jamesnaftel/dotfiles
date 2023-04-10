@@ -26,6 +26,11 @@ if [[ -f "$FX_ALIASES" ]]; then
     source "$FX_ALIASES"
 fi
 
+FX_EXPORTS=$HOME/.config/zsh/fx_exports
+if [[ -f "$FX_EXPORTS" ]]; then
+    source "$FX_EXPORTS"
+fi
+
 if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
@@ -49,3 +54,8 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
 
 
+# GoLang
+export GOROOT=/Users/jamesnaftel/.go
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/Users/jamesnaftel/dev/go
+export PATH=$GOPATH/bin:$PATH

@@ -15,6 +15,7 @@ cmp.setup({
         }),
     }),
     sources = cmp.config.sources({
+        { name = 'copilot'},
         { name = 'nvim_lua' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
@@ -25,11 +26,12 @@ cmp.setup({
         format = require('lspkind').cmp_format {
             with_text = true,
             menu = {
-                nvim_lua = "[Lua]",
-                nvim_lsp = "[LSP]",
-                luasnip = "[Snippet]",
-                path = "[Path]",
-                buffer = "[Buffer]",
+                copilot = "{Copilot}",
+                nvim_lua = "{Lua}",
+                nvim_lsp = "{LSP}",
+                luasnip = "{Snippet}",
+                path = "{Path}",
+                buffer = "{Buffer}",
             },
         },
     },

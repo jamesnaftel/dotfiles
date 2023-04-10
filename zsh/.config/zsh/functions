@@ -18,12 +18,12 @@ function install_powerline_precmd() {
 function viewmd() { pandoc -t plain "$1" | less; }
 
 # Use Git’s colored diff when available
-hash git &>/dev/null;
-if [ $? -eq 0 ]; then
-	function diff() {
-		git diff --color-words "$@";
-	}
-fi;
+# hash git &>/dev/null;
+# if [ $? -eq 0 ]; then
+# 	function diff() {
+# 		git diff --color-words "$@";
+# 	}
+# fi;
 
 # Git branch in prompt.
 function parse_git_branch() {
@@ -128,7 +128,9 @@ function nvimvenv {
 }
 
 
-
+function solana_export() {
+    export PATH="/Users/jamesnaftel/dev/projects/solana/solana"/bin:"$PATH"
+}
 
 killbuildagent() {
 	ps aux | grep buildagent | grep -v grep | head -n 1 | awk '{print $2}' | xargs kill -9
@@ -138,4 +140,54 @@ function add-yb-gem (){
 	YB_GITHUB_TOKEN="$(cat ~/.config/tokenbot)"
 	bundle add yourbase-rspec --git "https://$YB_GITHUB_TOKEN:x-oauth-basic@github.com/yourbase/yourbase-rspec-skipper-engine.git"
 
+}
+
+function tmux_env() {
+    tmux new-session -d -s dev >/dev/null
+    tmux rename-window -t dev:1 'notes'
+    tmux send-keys -t dev:1 'v ~/dev/notes/todo.md' Enter
+
+    # fx1
+    tmux new-window -t dev:2
+    tmux rename-window -t dev:2 'fx'
+    tmux send-keys -t dev:2 'fxd' Enter
+    tmux splitw -h -t dev:2
+    tmux send-keys -t dev:2.2 'ssh dev-ec2' Enter
+
+
+    #fx2
+    tmux new-window -t dev:3
+    tmux rename-window -t dev:3 'fx2'
+    tmux splitw -h -t dev:3
+
+    #fxdb
+    tmux new-window -t dev:4
+    tmux rename-window -t dev:4 'fxdb'
+
+    #servers
+    tmux new-window -t dev:5
+    tmux rename-window -t dev:5 'servers'
+    tmux splitw -v -t dev:5
+    tmux splitw -v -t dev:5
+    tmux select-pane -t dev:5.1
+    tmux splitw -h -t dev:5
+    tmux select-pane -t dev:5.3
+    tmux splitw -h -t dev:5
+    tmux select-pane -t dev:5.1
+    tmux send-keys -t dev:5.1 'ssh dev-ec2' Enter
+    tmux send-keys -t dev:5.2 'ssh dev-ec2' Enter
+    tmux send-keys -t dev:5.3 'ssh dev-ec2' Enter
+    tmux send-keys -t dev:5.4 'ssh dev-ec2' Enter
+    tmux send-keys -t dev:5.5 'ssh dev-ec2' Enter
+
+    #rsync
+    tmux new-window -t dev:6
+    tmux rename-window -t dev:6 'rsync'
+    tmux send-keys -t dev:6 'repeat-rsync' Enter
+
+    #fxdb
+    tmux new-window -t dev:7
+    tmux rename-window -t dev:7 'tinker'
+
+    tmux select-window -t dev:1
 }

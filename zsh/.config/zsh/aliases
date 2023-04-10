@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# kubernetes
+# App shortcuts
 alias k='kubectl'
 alias m='minikube'
 alias tf='terraform'
+alias dc='docker'
+alias v='nvimvenv'
 
 # enable color for grep
 alias grep='grep --color=auto --exclude-dir=node_modules --exclude-dir=vendor'
@@ -17,9 +19,9 @@ alias sudo='sudo '
 alias path='echo -e ${PATH//:/\\n}'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='exa -alF'
+alias la='exa -a'
+alias l='exa -F'
 
 if [ -x /usr/bin/dircolors ]; then
 	# shellcheck disable=SC2015
@@ -33,13 +35,5 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 fi
 
-alias dc='docker'
-
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias glt='git log $(git describe --tags --abbrev=0)..HEAD --oneline'
-
-#fx
-alias fxd="cd ~/dev/fx/falcon/"
-
-#nvim
-alias v='nvimvenv'
