@@ -145,7 +145,7 @@ function add-yb-gem (){
 function tmux_env() {
     tmux new-session -d -s dev >/dev/null
     tmux rename-window -t dev:1 'notes'
-    tmux send-keys -t dev:1 'v ~/dev/notes/todo.md' Enter
+    tmux send-keys -t dev:1 'cd ~/dev/notes/; v todo.md' Enter
 
     # fx1
     tmux new-window -t dev:2
@@ -153,7 +153,7 @@ function tmux_env() {
     tmux send-keys -t dev:2 'fxd' Enter
     tmux splitw -h -t dev:2
     tmux send-keys -t dev:2.2 'ssh dev-ec2' Enter
-
+    tmux select-pane -t dev:2.1
 
     #fx2
     tmux new-window -t dev:3
@@ -168,26 +168,28 @@ function tmux_env() {
     tmux new-window -t dev:5
     tmux rename-window -t dev:5 'servers'
     tmux splitw -v -t dev:5
-    tmux splitw -v -t dev:5
+    # tmux splitw -v -t dev:5
     tmux select-pane -t dev:5.1
-    tmux splitw -h -t dev:5
-    tmux select-pane -t dev:5.3
-    tmux splitw -h -t dev:5
-    tmux select-pane -t dev:5.1
-    tmux send-keys -t dev:5.1 'ssh dev-ec2' Enter
-    tmux send-keys -t dev:5.2 'ssh dev-ec2' Enter
-    tmux send-keys -t dev:5.3 'ssh dev-ec2' Enter
-    tmux send-keys -t dev:5.4 'ssh dev-ec2' Enter
-    tmux send-keys -t dev:5.5 'ssh dev-ec2' Enter
+    # tmux splitw -h -t dev:5
+    # tmux select-pane -t dev:5.3
+    # tmux splitw -h -t dev:5
+    # tmux select-pane -t dev:5.1
+    # tmux send-keys -t dev:5.1 'ssh dev-ec2' Enter
+    # tmux send-keys -t dev:5.2 'ssh dev-ec2' Enter
 
     #rsync
     tmux new-window -t dev:6
     tmux rename-window -t dev:6 'rsync'
-    tmux send-keys -t dev:6 'repeat-rsync' Enter
+    tmux send-keys -t dev:6 'dev-sync' Enter
 
     #fxdb
     tmux new-window -t dev:7
     tmux rename-window -t dev:7 'tinker'
+    tmux send-keys -t dev:7 'cd ~/dev/lang/python/tinker/; v tinker.py' Enter
+    tmux splitw -v -t dev:7
+    tmux send-keys -t dev:7 'cd ~/dev/lang/python/tinker/' Enter
 
     tmux select-window -t dev:1
+
+    tmux attach -t dev
 }

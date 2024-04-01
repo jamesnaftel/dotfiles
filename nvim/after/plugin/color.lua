@@ -34,6 +34,10 @@ function SetMyColors()
     hl("FloatBorder", {
         fg = colors.red
     })
+
+    hl("DiagnosticUnnecessary", {
+        fg = colors.hint
+    })
 end
 
 vim.cmd[[colorscheme tokyonight-night]]

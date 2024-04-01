@@ -43,11 +43,12 @@ bindkey -M vicmd 'j' history-substring-search-down
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Make sure /usr/local/bin is first in the path list
-export PATH="/usr/local/bin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
 
 # Python environment setup
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"

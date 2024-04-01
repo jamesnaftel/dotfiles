@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
 
     -- Telescop setup
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.3',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use 'kyazdani42/nvim-web-devicons'
@@ -35,23 +35,9 @@ return require('packer').startup(function(use)
     use 'windwp/nvim-autopairs'
     use 'windwp/nvim-ts-autotag'
     use 'norcalli/nvim-colorizer.lua'
-    use 'glepnir/lspsaga.nvim'
-
-    -- ChatGPT
-    use({
-        "jackMort/ChatGPT.nvim",
-            config = function()
-                require("chatgpt").setup({
-                    keymaps = {
-                        submit = "<C-t>"
-                    }
-                })
-            end,
-            requires = {
-              "MunifTanjim/nui.nvim",
-              "nvim-lua/plenary.nvim",
-              "nvim-telescope/telescope.nvim"
-            }
+    use ({
+        'nvimdev/lspsaga.nvim',
+        after = 'nvim-lspconfig',
     })
 
     -- Github Copilot
@@ -61,7 +47,6 @@ return require('packer').startup(function(use)
       event = "InsertEnter",
       after = "nvim-lspconfig",
       config = function()
-        print()
         require("copilot").setup({
           panel = {
               enabled = false,

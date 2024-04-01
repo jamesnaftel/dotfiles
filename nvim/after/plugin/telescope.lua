@@ -3,7 +3,11 @@ if (not status) then return end
 
 telescope.setup({
     defaults = {
+ 		color_devicons = true,
         prompt_prefix = ' >> ',
+
+
+ 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     }
 })
 
@@ -25,3 +29,4 @@ nnoremap("<leader>tm", 	"<cmd>lua require('telescope.builtin').man_pages()<CR>")
 -- Update these two
 nnoremap("<leader>vv", "<cmd>lua require('telescope.builtin').find_files{ cwd = '$HOME/.config/nvim'}<CR>")
 nnoremap("<leader>vr", "<cmd>lua require('telescope.builtin').live_grep{ cwd = '$HOME/.config/nvim'}<CR>")
+

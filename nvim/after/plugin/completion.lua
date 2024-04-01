@@ -2,6 +2,7 @@ local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 
 require('luasnip.loaders.from_vscode').lazy_load()
+-- require('zbirenbaum.copilot').lazy_load()
 
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
@@ -34,6 +35,10 @@ cmp.setup({
                 buffer = "{Buffer}",
             },
         },
+    },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     snippet = {
         expand = function(args)
