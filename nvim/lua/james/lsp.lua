@@ -69,7 +69,6 @@ nvim_lsp.pyright.setup({
 
 require("rust-tools").setup({
 	tools = {
-        runnables = { use_telescope = true },
         inlay_hints = {
             auto = true,
             only_current_line = true,
@@ -79,9 +78,6 @@ require("rust-tools").setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		cmd = {
-			"rustup",
-			"run",
-			"nightly",
 			"rust-analyzer",
 		},
 		settings = {
