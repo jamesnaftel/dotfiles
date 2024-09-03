@@ -41,28 +41,28 @@ return require('packer').startup(function(use)
     })
 
     -- Github Copilot
-    use {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      event = "InsertEnter",
-      after = "nvim-lspconfig",
-      config = function()
-        require("copilot").setup({
-          panel = {
-              enabled = false,
-              keymap = {
-                  accept = "<CR>",
-                  refresh = "<leader> gr"
-              },
-              layout = {
-                  position = "bottom",
-                  ratio = 0.4,
-              }
-          },
-          suggestions = { enabled = false, }
-        })
-      end,
-    }
+    -- use {
+    --   "zbirenbaum/copilot.lua",
+    --   cmd = "Copilot",
+    --   event = "InsertEnter",
+    --   after = "nvim-lspconfig",
+    --   config = function()
+    --     require("copilot").setup({
+    --       panel = {
+    --           enabled = false,
+    --           keymap = {
+    --               accept = "<CR>",
+    --               refresh = "<leader> gr"
+    --           },
+    --           layout = {
+    --               position = "bottom",
+    --               ratio = 0.4,
+    --           }
+    --       },
+    --       suggestions = { enabled = false, }
+    --     })
+    --   end,
+    -- }
 
 
     -- Completion
@@ -76,13 +76,13 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
     use 'rafamadriz/friendly-snippets'
-    use {
-      "zbirenbaum/copilot-cmp",
-      after = { "copilot.lua" },
-      config = function ()
-        require("copilot_cmp").setup()
-      end
-    }
+    -- use {
+    --   "zbirenbaum/copilot-cmp",
+    --   after = { "copilot.lua" },
+    --   config = function ()
+    --     require("copilot_cmp").setup()
+    --   end
+    -- }
 
     -- Markdown
     use {
