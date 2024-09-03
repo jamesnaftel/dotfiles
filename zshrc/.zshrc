@@ -1,20 +1,62 @@
-export ZSH="$HOME/.oh-my-zsh"
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-plugins=(git gitfast kubectl history-substring-search docker vi-mode)
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 
-source $ZSH/oh-my-zsh.sh
+source "${ZINIT_HOME}/zinit.zsh"
 
-eval "$(direnv hook zsh)"
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+zinit snippet OMZP::git
+zinit snippet OMZP::vi-mode
+
+autoload -Uz compinit && compinit
+
+zinit cdreplay -q
+
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+ZSH_THEME="moonfly"
 
 source $HOME/.config/zsh/functions
 source $HOME/.config/zsh/exports
 source $HOME/.config/zsh/path
-source $HOME/.config/zsh/colors
 source $HOME/.config/zsh/aliases
-source $HOME/.config/zsh/prompts
 
 FX_FUNCTIONS=$HOME/.config/zsh/fx_functions
 if [[ -f "$FX_FUNCTIONS" ]]; then
@@ -31,32 +73,29 @@ if [[ -f "$FX_EXPORTS" ]]; then
     source "$FX_EXPORTS"
 fi
 
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
-
-bindkey '^A' history-substring-search-up
-bindkey '^B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Make sure /usr/local/bin is first in the path list
-# export PATH="/usr/local/bin:$PATH"
-
 # Python environment setup
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
-
+# fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude .github"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude .github"
 
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git --exclude .github . "$1"
+}
 
-# GoLang
-export GOROOT=/Users/jamesnaftel/.go
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git --exclude .github . "$1"
+}
+
+export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=/Users/jamesnaftel/dev/go
 export PATH=$GOPATH/bin:$PATH
