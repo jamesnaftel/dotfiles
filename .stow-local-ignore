@@ -2,8 +2,8 @@
 \.gitignore
 \.gitmodules
 
-\scripts
-\nvim-packer
+scripts
+nvim-packer
 
 ^/README.*
 ^/LICENSE.*
