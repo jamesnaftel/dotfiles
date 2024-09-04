@@ -1,0 +1,10 @@
+\.git
+\.gitignore
+\.gitmodules
+
+\scripts
+\nvim-packer
+
+^/README.*
+^/LICENSE.*
+^/COPYING
