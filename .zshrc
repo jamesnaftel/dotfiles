@@ -16,22 +16,24 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
 
+zinit snippet OMZP::git
+
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
 
-zinit snippet OMZP::git
-zinit snippet OMZP::vi-mode
 
 autoload -Uz compinit && compinit
-
 zinit cdreplay -q
 
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
@@ -73,11 +75,6 @@ if [[ -f "$FX_EXPORTS" ]]; then
     source "$FX_EXPORTS"
 fi
 
-# Python environment setup
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-
-# fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude .github"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -99,5 +96,7 @@ export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=/Users/jamesnaftel/dev/go
 export PATH=$GOPATH/bin:$PATH
+
+eval "$(pyenv init --path)"
 
 bindkey -v
