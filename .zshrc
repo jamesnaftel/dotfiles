@@ -100,3 +100,4 @@ export PATH=$GOROOT/bin:$PATH
 export GOPATH=/Users/jamesnaftel/dev/go
 export PATH=$GOPATH/bin:$PATH
 
+bindkey -v
