@@ -17,11 +17,12 @@ zinit ice as"command" from"gh-r" \
 zinit light starship/starship
 
 zinit snippet OMZP::git
+zinit snippet OMZP::vi-mode
 
+zinit light zsh-users/zsh-history-substring-search
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
 
 
@@ -98,5 +99,9 @@ export GOPATH=/Users/jamesnaftel/dev/go
 export PATH=$GOPATH/bin:$PATH
 
 eval "$(pyenv init --path)"
+
+if [ -f "$HOME/.api.env" ]; then
+    export $(cat "$HOME/.api.env" | xargs)
+fi
 
 bindkey -v

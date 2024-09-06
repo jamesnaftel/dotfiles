@@ -1,6 +1,7 @@
 -- Custom Parameters (with defaults)
 return {
     "David-Kunz/gen.nvim",
+    enabled = false,
     opts = {
         -- model = "starcoder2:3b", -- The default model to use.
         model = "llama3.1",

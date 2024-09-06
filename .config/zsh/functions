@@ -72,17 +72,16 @@ function tmux_env() {
     tmux rename-window -t dev:2 'fx'
     tmux send-keys -t dev:2 'fxd' Enter
     tmux splitw -h -t dev:2
-    tmux send-keys -t dev:2.2 'ssh dev-ec2' Enter
     tmux select-pane -t dev:2.1
 
-    #fx2
+    #Exodus
     tmux new-window -t dev:3
     tmux rename-window -t dev:3 'exodus'
     tmux splitw -h -t dev:3
 
-    #fxdb
+    #Kube&Infra
     tmux new-window -t dev:4
-    tmux rename-window -t dev:4 'fxdb'
+    tmux rename-window -t dev:4 'Kube'
 
     #servers
     tmux new-window -t dev:5
@@ -93,9 +92,8 @@ function tmux_env() {
     #rsync
     tmux new-window -t dev:6
     tmux rename-window -t dev:6 'rsync'
-    tmux send-keys -t dev:6 'dev-sync' Enter
 
-    #fxdb
+    #tinker
     tmux new-window -t dev:7
     tmux rename-window -t dev:7 'tinker'
     tmux send-keys -t dev:7 'cd ~/dev/lang/python/tinker/; v tinker.py' Enter

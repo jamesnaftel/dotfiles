@@ -12,11 +12,22 @@ return {
                     preview_cutoff = 0,
                 },
             },
+            border = true,
+            borderchars = {
+                prompt = { "▀", "▐", "▄", "▍", "▛", "▜", "▟", "▙" },
+                results = { "▀", "▐", "▄", "▍", "▛", "▜", "▟", "▙" },
+                preview = { "▀", "▐", "▄", "▍", "▛", "▜", "▟", "▙" },
+            },
+            -- borderchars = {
+            --     prompt = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+            --     results = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+            --     preview = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+            -- },
         },
         extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
-          },
+            ['ui-select'] = {
+                require('telescope.themes').get_dropdown(),
+            },
         },
         pickers = {
             colorscheme = {
