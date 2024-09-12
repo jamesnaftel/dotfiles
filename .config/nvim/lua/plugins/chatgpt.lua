@@ -5,8 +5,8 @@ return {
         config = function()
             require("chatgpt").setup({
                 openai_params = {
-                    model = "gpt-3.5-turbo",
-                    max_tokens = 10000,
+                    model = "gpt-4o",
+                    max_tokens = 4096,
                 }
             })
         end,
