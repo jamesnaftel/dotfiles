@@ -24,3 +24,16 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.g.SCHEME = params.match
   end,
 })
+
+-- Add the whitespace trimming function
+local function trim_whitespace()
+  local save = vim.fn.winsaveview() -- Save cursor position
+  vim.cmd([[%s/\s\+$//e]])          -- Trim trailing whitespace
+  vim.fn.winrestview(save)          -- Restore cursor position
+end
+
+-- Attach to BufWritePre event
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = trim_whitespace,
+  desc = "Trim trailing whitespace on save",
+})

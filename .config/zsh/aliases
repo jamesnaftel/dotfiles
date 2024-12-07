@@ -19,9 +19,9 @@ alias sudo='sudo '
 alias path='echo -e ${PATH//:/\\n}'
 
 # some more ls aliases
-alias ll='exa -alF'
-alias la='exa -a'
-alias l='exa -F'
+alias ll='eza -alF'
+alias la='eza -a'
+alias l='eza -F'
 
 if [ -x /usr/bin/dircolors ]; then
 	# shellcheck disable=SC2015

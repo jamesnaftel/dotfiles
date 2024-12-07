@@ -7,7 +7,7 @@ return {
 					 'luadoc', 'markdown', 'markdown_inline',
 					 'query', 'vim', 'vimdoc', 'go', 'python',
 					 'rust', 'terraform', 'javascript', 'tsx',
-					 'json', 'cpp', 'dockerfile'
+					 'json', 'cpp', 'dockerfile', 'zig'
 			},
 		    -- Autoinstall languages that are not installed
 		    auto_install = true,

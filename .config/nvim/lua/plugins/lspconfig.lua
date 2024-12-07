@@ -52,7 +52,7 @@ return {
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>gR', vim.lsp.buf.rename, '[R]e[n]ame')
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
@@ -121,19 +121,17 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       -- clangd = {},
-      gopls = {},
-      pyright = {
-          -- root_dir = nvim_lsp.util.root_pattern('.git'),
+      gopls = {
+        on_attach = function(_, bufnr)
+          local opts = { noremap = true, silent = true, buffer = bufnr }
+
+          vim.keymap.set('n', '<leader>gf', function()
+            vim.lsp.buf.format { async = true }
+          end, opts)
+        end,
       },
-      -- rust_analyzer = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`tsserver`) will work just fine
-      -- tsserver = {},
-      --
+      pyright = {},
+      zls = {},
 
       lua_ls = {
         -- cmd = {...},
