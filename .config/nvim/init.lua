@@ -8,6 +8,10 @@ vim.g.loaded_python_provider = 0
 
 vim.g.netrw_banner = 0
 
+vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
+vim.keymap.set("n", "<space>x", ":.lua<CR>")
+vim.keymap.set("v", "<space>x", ":lua<CR>")
+
 require("config.options")
 require("config.keymaps")
 require("config.qol")
