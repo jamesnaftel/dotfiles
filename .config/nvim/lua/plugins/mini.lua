@@ -1,6 +1,6 @@
 -- Collection of various small independent plugins/modules
 --
-return   {
+return {
   'echasnovski/mini.nvim',
   config = function()
     -- Better Around/Inside textobjects
@@ -37,4 +37,3 @@ return   {
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
 }
-
