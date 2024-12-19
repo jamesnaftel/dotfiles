@@ -1,12 +1,13 @@
 return {
   'hrsh7th/nvim-cmp',
+  enabled = false,
   lazy = false,
   priority = 100,
   dependencies = {
     'onsails/lspkind.nvim',
     {
       'L3MON4D3/LuaSnip',
-      version = "v2.3.0",
+      version = "v2.*",
       build = "make install_jsregexp",
       dependencies = {},
     },
@@ -17,6 +18,7 @@ return {
     --  into multiple repos for maintenance purposes.
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+
   },
   config = function()
     local lspkind = require("lspkind")
@@ -40,25 +42,19 @@ return {
           },
           { "i", "c" }
         ),
-        -- TODO: Do i need these?
-        -- ['<C-l>'] = cmp.mapping(function()
-        --   if luasnip.expand_or_locally_jumpable() then
-        --     luasnip.expand_or_jump()
-        --   end
-        -- end, { 'i', 's' }),
-        -- ['<C-h>'] = cmp.mapping(function()
-        --   if luasnip.locally_jumpable(-1) then
-        --     luasnip.jump(-1)
-        --   end
-        -- end, { 'i', 's' }),
-
+        ["<C-l>"] = cmp.mapping(function()
+          if luasnip.expand_or_locally_jumpable() then
+            luasnip.expand_or_jump()
+          end
+        end, { "i", "s" }),
+        ["<C-h>"] = cmp.mapping(function()
+          if luasnip.locally_jumpable(-1) then
+            luasnip.jump(-1)
+          end
+        end, { "i", "s" }),
       },
       sources = {
-        {
-          name = 'lazydev',
-          -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-          group_index = 0,
-        },
+        { name = 'lazydev', group_index = 0, },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
