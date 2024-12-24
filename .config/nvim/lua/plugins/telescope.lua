@@ -29,6 +29,7 @@ return {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
+        fzf = {},
       },
       pickers = {
         colorscheme = {
@@ -59,7 +60,7 @@ return {
       builtin.live_grep {
         type_filter = 'py'
       }
-    end, { desc = "" })
+    end, { desc = "[S]earch Only Python Files" })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
@@ -79,9 +80,18 @@ return {
       }
     end, { desc = '[S]earch [/] in Open Files' })
 
-    -- Shortcut for searching your Neovim configuration files
-    vim.keymap.set('n', '<leader>sn', function()
-      builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[S]earch [N]eovim files' })
+    -- Search Config
+    vim.keymap.set("n", '<leader>ev', function()
+      builtin.find_files({
+        cwd = vim.fn.stdpath("config")
+      })
+    end, { desc = "[S]earch Neovim Config Files" })
+
+    -- Search Neovim Plugin Files
+    vim.keymap.set("n", '<leader>ep', function()
+      builtin.find_files({
+        cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+      })
+    end, { desc = "[S]earch Neovim Plugin Files" })
   end,
 }
