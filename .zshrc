@@ -95,10 +95,10 @@ _fzf_compgen_dir() {
 
 export GOROOT=/usr/local/go
 export PATH=$GOROOT/bin:$PATH
-export GOPATH=/Users/jamesnaftel/dev/go
+export GOPATH=$HOME/dev/go
 export PATH=$GOPATH/bin:$PATH
 
-eval "$(pyenv init --path)"
+#eval "$(pyenv init --path)"
 
 if [ -f "$HOME/.api.env" ]; then
     export $(cat "$HOME/.api.env" | xargs)
