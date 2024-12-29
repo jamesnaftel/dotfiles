@@ -1,11 +1,24 @@
 return {
   {
-    'saghen/blink.cmp',
-    dependencies = 'rafamadriz/friendly-snippets',
-
-    version = 'v0.*',
-
+    'saghen/blink.compat',
+    version = '*',
+    lazy = true,
     opts = {
+      debug = false,
+    },
+  },
+  {
+    'saghen/blink.cmp',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+    },
+    version = 'v0.*',
+    opts = {
+      completion = {
+        menu = {
+          auto_show = true,
+        },
+      },
       keymap = { preset = 'default' },
 
       appearance = {
@@ -13,7 +26,7 @@ return {
         nerd_font_variant = 'mono'
       },
 
-      signature = { enabled = true }
+      signature = { enabled = true },
     },
   },
 }
