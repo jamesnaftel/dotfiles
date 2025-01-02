@@ -9,9 +9,9 @@ return {
     accept_map = "<c-cr>",  -- set keymap to replace the previous selection with the last result
     host = "localhost",     -- The host running the Ollama service.
     port = "11434",         -- The port on which the Ollama service is listening.
-    display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
+    display_mode = "split", -- The display mode. Can be "float" or "split" or "horizontal-split".
     show_prompt = false,    -- Shows the prompt submitted to Ollama.
-    show_model = false,     -- Displays which model you are using at the beginning of your chat session.
+    show_model = true,      -- Displays which model you are using at the beginning of your chat session.
     no_auto_close = false,  -- Never closes the window automatically.
     hidden = false,         -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
     init = function(options)
@@ -27,6 +27,7 @@ return {
     -- The executed command must return a JSON object with { response, context }
     -- (context property is optional).
     -- list_models = '<omitted lua function>', -- Retrieves a list of model names
-    debug = false -- Prints errors and the command which is run.
-  }
+    debug = false, -- Prints errors and the command which is run.
+  },
+  vim.keymap.set({ 'n', 'v' }, '<leader>ga', ':Gen Ask<CR>')
 }
