@@ -11,7 +11,6 @@ return {
     'saghen/blink.cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
-      'yetone/avante.nvim',
     },
     version = 'v0.*',
     opts = {
@@ -23,19 +22,9 @@ return {
       },
       signature = { enabled = true },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'markdown', 'avante_commands', 'avante_mentions' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'markdown' },
         providers = {
           markdown = { name = 'RenderMarkdown', module = 'render-markdown.integ.blink' },
-          avante_commands = {
-            name = "avante_commands",
-            module = "blink.compat.source",
-            score_offset = 100,
-          },
-          avante_mentions = {
-            name = "avante_mentions",
-            module = "blink.compat.source",
-            score_offset = 110,
-          },
         },
       },
     },
