@@ -4,7 +4,6 @@ return {
     { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    'saghen/blink.cmp',
 
     { 'j-hui/fidget.nvim',       opts = {} },
   },
@@ -86,7 +85,7 @@ return {
     }
 
     local lspconfig = require('lspconfig')
-    local capabilities = require('blink.cmp').get_lsp_capabilities()
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     for server, config in pairs(servers) do
       lspconfig[server].setup({ capabilities = capabilities })
     end
