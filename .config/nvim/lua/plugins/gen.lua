@@ -1,7 +1,7 @@
 -- Custom Parameters (with defaults)
 return {
   "David-Kunz/gen.nvim",
-  enabled = true,
+  enabled = false,
   opts = {
     model = "qwen2.5-coder:7b-instruct",
     quit_map = "q",         -- set keymap for close the response window
@@ -36,8 +36,8 @@ return {
       extract = "```$filetype\n(.-)```"
     }
   end,
-  vim.keymap.set({ 'n', 'v' }, '<leader>ga', ':Gen Ask<CR>'),
-  vim.keymap.set({ 'n', 'v' }, '<leader>gm', ':lua require("gen").select_model()<CR>'),
-  vim.keymap.set({ 'n', 'v' }, '<leader>gg', ':Gen Enhance_Code<CR>'),
-  vim.keymap.set('i', '<c-i>', '<esc>:Gen Enhance_Code<CR>'),
+  -- vim.keymap.set({ 'n', 'v' }, '<leader>ga', ':Gen Ask<CR>'),
+  -- vim.keymap.set({ 'n', 'v' }, '<leader>gm', ':lua require("gen").select_model()<CR>'),
+  -- vim.keymap.set({ 'n', 'v' }, '<leader>gg', ':Gen Enhance_Code<CR>'),
+  -- vim.keymap.set('i', '<c-i>', '<esc>:Gen Enhance_Code<CR>'),
 }

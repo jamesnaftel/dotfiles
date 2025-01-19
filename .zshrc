@@ -104,6 +104,8 @@ if [ -f "$HOME/.api.env" ]; then
     export $(cat "$HOME/.api.env" | xargs)
 fi
 
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
+
 bindkey -v
 
 # Created by `pipx` on 2024-12-28 15:33:59
