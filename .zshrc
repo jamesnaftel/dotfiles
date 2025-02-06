@@ -110,3 +110,4 @@ bindkey -v
 
 # Created by `pipx` on 2024-12-28 15:33:59
 export PATH="$PATH:/home/jamesn/.local/bin"
+export OLLAMA_API_BASE=http://localhost:11434
