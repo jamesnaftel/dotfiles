@@ -1,0 +1,50 @@
+{
+    "window.commandCenter": true,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+      {
+        "before": ["j", "k"],
+        "after": ["<Esc>"]
+      }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<leader>", "<space>"],
+        "commands": [":nohl"]
+      },
+      {
+        "before": ["<leader>", "t", "f"],
+        "commands": ["workbench.action.quickOpen"]
+      },
+      {
+        "before": ["<leader>", "s", "g"],
+        "commands": ["workbench.action.findInFiles"]
+      },
+      {
+        "before": ["g", "d"],
+        "commands": ["editor.action.revealDefinition"]
+      },
+      {
+        "before": ["K"],
+        "commands": ["editor.action.peekDefinition"]
+      },
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+      "<C-a>": false,
+      "<C-f>": false
+    },
+  
+    "// To improve performance",
+    "extensions.experimental.affinity": {
+      "vscodevim.vim": 1
+    },
+    "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'monospace'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14, // Adjust font size as needed
+    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'"
+}
