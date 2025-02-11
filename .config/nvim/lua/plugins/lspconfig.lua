@@ -29,7 +29,7 @@ return {
         if not client then return end
 
         ---@diagnostic disable-next-line: missing-parameter
-        if client:supports_method('textDocument/document_highlight') then
+        if client.server_capabilities.documentHighlightProvider then
           local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = args.buf,

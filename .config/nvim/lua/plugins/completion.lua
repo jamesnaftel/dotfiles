@@ -3,8 +3,10 @@ return {
     "hrsh7th/nvim-cmp",
     lazy = false,
     priority = 100,
+    event = "InsertEnter",
     dependencies = {
       "onsails/lspkind.nvim",
+      "zbirenbaum/copilot-cmp",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
@@ -16,6 +18,8 @@ return {
       vim.opt.shortmess:append "c"
 
       local lspkind = require("lspkind")
+      require("copilot").setup()
+      require("copilot_cmp").setup()
 
       local cmp = require("cmp")
       cmp.setup({
@@ -25,6 +29,7 @@ return {
           end,
         },
         sources = {
+          { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
