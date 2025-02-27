@@ -1,4 +1,4 @@
-{
+    {
     "window.commandCenter": true,
     "vim.easymotion": true,
     "vim.incsearch": true,
@@ -38,7 +38,7 @@
       "<C-a>": false,
       "<C-f>": false
     },
-  
+
     "// To improve performance",
     "extensions.experimental.affinity": {
       "vscodevim.vim": 1
@@ -46,5 +46,10 @@
     "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'monospace'",
     "editor.fontLigatures": true,
     "editor.fontSize": 14, // Adjust font size as needed
-    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'"
+    "workbench.colorTheme": "Dark Magic Frankenstein",
+    "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
+
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000
 }
+
