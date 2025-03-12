@@ -98,16 +98,8 @@ export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/dev/go
 export PATH=$GOPATH/bin:$PATH
 
-eval "$(pyenv init --path)"
-
-if [ -f "$HOME/.api.env" ]; then
-    export $(cat "$HOME/.api.env" | xargs)
-fi
-
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/config
+export OLLAMA_API_BASE=http://localhost:11434
 
 bindkey -v
 
-# Created by `pipx` on 2024-12-28 15:33:59
-export PATH="$PATH:/home/jamesn/.local/bin"
-export OLLAMA_API_BASE=http://localhost:11434
