@@ -6,7 +6,15 @@ return {
     event = "InsertEnter",
     dependencies = {
       "onsails/lspkind.nvim",
-      "zbirenbaum/copilot-cmp",
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup({
+            method = "getCompletionsCycling", -- Ensure Copilot works inside cmp
+            force_auto_complete = false,      -- ✅ Prevent Copilot from overriding inline completions
+          })
+        end
+      },
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
@@ -18,8 +26,6 @@ return {
       vim.opt.shortmess:append "c"
 
       local lspkind = require("lspkind")
-      require("copilot").setup()
-      require("copilot_cmp").setup()
 
       local cmp = require("cmp")
       cmp.setup({
@@ -29,7 +35,8 @@ return {
           end,
         },
         sources = {
-          { name = "copilot" },
+          -- group_index will hide copilot from source list
+          { name = "copilot" }, --, group_index = 2 },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
