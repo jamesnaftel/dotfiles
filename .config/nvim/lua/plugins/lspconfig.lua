@@ -76,6 +76,8 @@ return {
       gopls = {},
       pyright = {},
       zls = {},
+      terraformls = {},
+
 
       lua_ls = {
         settings = {

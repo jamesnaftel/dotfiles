@@ -17,7 +17,7 @@ return {
       { "<leader>zf", ":CopilotChatFix<CR>",      mode = "v", desc = "Fix Code Issues" },
       { "<leader>zo", ":CopilotChatOptimize<CR>", mode = "v", desc = "Optimize Code" },
       { "<leader>zd", ":CopilotChatDocs<CR>",     mode = "v", desc = "Generate Docs" },
-      { "<leader>zt", ":CopilotChatTests<CR>",    mode = "v", desc = "Generate TEsts" },
+      { "<leader>zt", ":CopilotChatTests<CR>",    mode = "v", desc = "Generate Tests" },
       { "<leader>zm", ":CopilotChatCommit<CR>",   mode = "n", desc = "Generate Commit Message" },
       { "<leader>zs", ":CopilotChatExplain<CR>",  mode = "v", desc = "Generate Commit for Selection" },
     }
