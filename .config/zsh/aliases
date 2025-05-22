@@ -7,6 +7,12 @@ alias tf='terraform'
 alias dc='docker'
 alias v='nvimvenv'
 
+alias ve='XDG_CONFIG_HOME=$HOME/.config/nvim-ex \
+    XDG_DATA_HOME=$HOME/.local/share/nvim-ex \
+    XDG_CACHE_HOME=$HOME/.cache/nvim-ex \
+    XDG_STATE_HOME=$HOME/.local/state/nvim-ex \
+    nvim'
+
 # enable color for grep
 alias grep='grep --color=auto --exclude-dir=node_modules --exclude-dir=vendor'
 alias fgrep='fgrep --color=auto'

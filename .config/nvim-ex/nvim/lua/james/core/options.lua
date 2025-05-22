@@ -1,7 +1,13 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+vim.g.python3_host_prog = '/Users/jamesnaftel/.pyenv/shims/python'
+vim.g.loaded_python_provider = 0
+
+vim.g.netrw_banner = 0
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
-
-vim.opt.mouse = 'a'
 
 vim.opt.showmode = false
 vim.opt.breakindent = true
@@ -18,9 +24,6 @@ vim.opt.signcolumn = 'yes'
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 500
 
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
 vim.opt.inccommand = 'split'
 
 vim.opt.cursorline = true
@@ -36,5 +39,5 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- Do I still want this?
--- vim.opt.pumblend = 20
+vim.opt.background = 'dark'
+vim.opt.scrolloff = 8

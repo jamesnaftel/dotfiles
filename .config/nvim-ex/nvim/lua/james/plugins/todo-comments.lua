@@ -22,7 +22,6 @@ return {
         TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
       },
     })
-
     -- keymaps
     vim.keymap.set("n", "]t", function()
       todo_comments.jump_next()
