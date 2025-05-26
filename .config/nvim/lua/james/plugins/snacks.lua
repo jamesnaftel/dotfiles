@@ -104,6 +104,10 @@ return {
       -- TODO: pick new keymap
       { "<leader>th",  function() require("snacks").picker.colorschemes({ layout = "ivy" }) end,          desc = "Pick Color Schemes" },
       { "<leader>vh",  function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
+
+      -- Scratch
+      { "<leader>.",  function() require("snacks").scratch() end, desc = "Toggle Scratch Buffer" },
+      { "<leader>S",  function() require("snacks").scratch.select() end,                                  desc = "Select Scratch Buffer" },
     }
   },
   {
