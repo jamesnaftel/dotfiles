@@ -8,3 +8,4 @@ AWSVPNClient
 AWS VPN Client
 .semgrep
 lazygit
+uv/
