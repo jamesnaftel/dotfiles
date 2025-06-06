@@ -29,13 +29,13 @@ return {
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer',  }, -- 'copilot'
         providers = {
-          copilot = {
-            name = "copilot",
-            -- module = "blink-copilot",
-            module = "blink-cmp-copilot",
-            score_offset = 100,
-            async = true,
-          },
+          -- copilot = {
+          --   name = "copilot",
+          --   -- module = "blink-copilot",
+          --   module = "blink-cmp-copilot",
+          --   score_offset = 100,
+          --   async = true,
+          -- },
         },
       },
 

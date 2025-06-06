@@ -1,9 +1,9 @@
 return {
   "olimorris/codecompanion.nvim",
-  enabled = false,
+  enabled = true,
   dependencies = {
     -- "nvim-lua/plenary.nvim",
-    "zbirenbaum/copilot.vim",
+    "zbirenbaum/copilot.lua",
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {
@@ -19,7 +19,6 @@ return {
       },
     },
     strategies = {
-      -- Change the default chat adapter
       chat = {
         adapter = "copilot",
       },
