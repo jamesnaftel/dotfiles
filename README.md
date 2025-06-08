@@ -1,7 +1,47 @@
-This is a work-in-progress.  Reworking zsh and switching to neovim (plus evaluating plugins).
+# General Notes
 
 
-# TODO
-* Add tmux config
-* Add base16 support
-*
+
+
+
+## VSCode + vim
+'''
+"vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "t", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "s", "g"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.peekDefinition"]
+    },
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+},
+'''
