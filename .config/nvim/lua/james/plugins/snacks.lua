@@ -1,6 +1,7 @@
 return {
   {
     "folke/snacks.nvim",
+    enabled = true,
     priority = 1000,
     lazy = false,
     opts = {
@@ -106,8 +107,8 @@ return {
       { "<leader>vh",  function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
 
       -- Scratch
-      { "<leader>.",  function() require("snacks").scratch() end, desc = "Toggle Scratch Buffer" },
-      { "<leader>S",  function() require("snacks").scratch.select() end,                                  desc = "Select Scratch Buffer" },
+      { "<leader>.",   function() require("snacks").scratch() end,                                        desc = "Toggle Scratch Buffer" },
+      { "<leader>S",   function() require("snacks").scratch.select() end,                                 desc = "Select Scratch Buffer" },
     }
   },
   {

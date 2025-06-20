@@ -1,6 +1,7 @@
 return {
   {
     "echasnovski/mini.nvim",
+    enabled = true,
     config = function()
       require("mini.ai").setup()
       require("mini.surround").setup()

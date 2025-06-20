@@ -1,5 +1,6 @@
 return {
   'tpope/vim-fugitive',
+  enabled = true,
   config = function()
     vim.api.nvim_create_user_command("GdiffBottom", function(args)
       vim.cmd("belowright split")                       -- Open the split below
@@ -13,4 +14,3 @@ return {
     { "<leader>gc", ":diffoff! | only | e<CR>", desc = "Close Diff",          noremap = true, silent = true },
   }
 }
-

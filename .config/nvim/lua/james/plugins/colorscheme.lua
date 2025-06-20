@@ -2,6 +2,7 @@ return {
   -- NOTE: Rose pine
   {
     "rose-pine/neovim",
+    enabled = false,
     name = "rose-pine",
     -- priority = 1000,
     config = function()
