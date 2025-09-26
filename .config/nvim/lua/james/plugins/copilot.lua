@@ -1,8 +1,8 @@
 return {
-    {
+  {
     "zbirenbaum/copilot.lua",
     enable = false,
-    event = "InsertEnter",
+    -- event = "InsertEnter",
 
     opts = {
       suggestion = {
@@ -11,7 +11,7 @@ return {
         debounce = 75,
         trigger_on_accept = true,
         keymap = {
-          accept = "<leader>y",
+          accept = "<M-y>", -- leader better?
         },
       },
       -- Disable the default panel

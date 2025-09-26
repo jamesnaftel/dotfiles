@@ -22,6 +22,9 @@ return {
       chat = {
         adapter = "copilot",
       },
+      inline = {
+        adapter = "copilot",
+      },
     },
     opts = {
       -- Set debug logging

@@ -11,6 +11,8 @@ require('james.lsp')
 
 vim.lsp.enable("lua_ls", true)
 vim.lsp.enable("pyright", true)
+--vim.lsp.enable("rust_analyzer", true)
+vim.lsp.enable("gopls", true)
 
 
-require('james.plugins.copilot')
+--require('james.plugins.copilot')

@@ -100,3 +100,5 @@ export OLLAMA_API_BASE=http://localhost:11434
 bindkey -v
 
 source ~/lua51_env/bin/activate
+
+source ~/.profile
