@@ -8,7 +8,7 @@ font-style = "Medium"
 # Change this to true to allow tabs
 window-decoration = true
 
-# This makes the title bar blend in perfectly with your black background
+# macOS-only (ignored on Linux)
 macos-titlebar-style = tabs
 
 # ---- Colors + Look and Feel ----
@@ -17,7 +17,7 @@ foreground = #ffffff
 cursor-color = #9B96B5
 cursor-text = #1A1A1E
 
-# Transparency & Blur (The macOS "Glass" Look)
+# Transparency & Blur (macOS glass effect; blur ignored on Linux)
 background-opacity = 0.85
 background-blur = macos-glass-regular
 
