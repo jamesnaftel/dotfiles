@@ -1,3 +1,13 @@
+vim.filetype.add({
+  extension = {
+    gowork = "gowork",
+    gotmpl = "gotmpl",
+  },
+  filename = {
+    ["go.work"] = "gowork",
+  },
+})
+
 vim.lsp.config('gopls', {
   name = 'gopls',
   cmd = { 'gopls' },
@@ -70,7 +80,3 @@ vim.lsp.config('gopls', {
     -- })
   end,
 })
-
-
-
-

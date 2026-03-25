@@ -43,3 +43,5 @@ fi
 
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias glt='git log $(git describe --tags --abbrev=0)..HEAD --oneline'
+
+alias nvim-rebuild='(cd ~/dev/env/neovim && git pull && make distclean && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install)'

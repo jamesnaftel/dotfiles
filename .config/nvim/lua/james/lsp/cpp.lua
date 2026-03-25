@@ -31,8 +31,6 @@ vim.lsp.config('clangd', {
     '--clang-tidy',
     '--completion-style=detailed',
     '--header-insertion=iwyu',
-    '--suggest-missing-includes',
-    '--cross-file-rename',
   },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   single_file_support = true,

@@ -1,138 +1,76 @@
+command_timeout = 2000  # Fixes the Git timeout warning
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Format: Starting directly with the Directory 'Pill'
 format = """
-[](color_orange)\
-$os\
-$username\
-[](bg:color_yellow fg:color_orange)\
+[](color_lavender)\
 $directory\
-[](fg:color_yellow bg:color_aqua)\
+[](fg:color_lavender) \
+[](color_purple)\
 $git_branch\
 $git_status\
-[](fg:color_aqua bg:color_blue)\
-$c\
+[](fg:color_purple) \
+[](color_dev_bg)\
 $rust\
 $golang\
 $nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
+[](fg:color_dev_bg) \
+[](color_bg3)\
 $time\
-[ ](fg:color_bg3)\
+[](fg:color_bg3)\
 $line_break$character"""
 
-palette = 'gruvbox_dark'
+palette = 'ghostty_vibe'
 
-command_timeout = 750
-
-[palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_bg1 = '#3c3836'
-color_bg3 = '#665c54'
-color_blue = '#458588'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
-
-[os]
-disabled = false
-style = "bg:color_orange fg:color_fg0"
-
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-EndeavourOS = ""
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
-
-[username]
-show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user ]($style)'
+[palettes.ghostty_vibe]
+color_grey = '#1a1a1e'
+color_lavender = '#9B96B5'
+color_purple = '#6c629d'
+color_dev_bg = '#3b4252'
+color_bg3 = '#2e3440'
 
 [directory]
-style = "fg:color_fg0 bg:color_yellow"
+style = "fg:color_grey bg:color_lavender"
 format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
+# --- Path Tuning ---
+truncation_length = 8      # Show up to 8 parent directories before shortening
+truncate_to_repo = false   # Don't cut the path off just because you're in a Git repo
+fish_style_pwd_dir_length = 3 # If it DOES truncate, show 3 chars (e.g., dev/pro/my-project)
 
 [git_branch]
 symbol = ""
-style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:color_purple fg:#ffffff"
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
-
-[nodejs]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[c]
-symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:color_purple fg:#ffffff"
+format = '[[($all_status$ahead_behind )](fg:#ffffff bg:color_purple)]($style)'
 
 [rust]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+symbol = " "
+style = "bg:color_dev_bg fg:#ffa066"
+format = '[$symbol($version )]($style)'
 
 [python]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+symbol = " "
+style = "bg:color_dev_bg fg:#ebcb8b"
+format = '[$symbol($version )]($style)'
+
+[nodejs]
+symbol = " " # This is the classic Node 'JS' symbol
+style = "bg:color_dev_bg fg:#a3be8c" # A nice Node-green
+format = '[$symbol($version )]($style)' # Removed the "via"
 
 [time]
 disabled = false
-time_format = "%R"
-style = "bg:color_bg3"
-format = '[[  $time ](fg:color_fg0 bg:color_bg3)]($style)'
-
-[line_break]
-disabled = false
+style = "bg:color_bg3 fg:#9B96B5"
+format = '[  $time ]($style)'
 
 [character]
-disabled = false
-success_symbol = '[->](bold fg:color_green)'
-error_symbol = '[->](bold fg:color_red)'
-vimcmd_symbol = '[<-](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[<-](bold fg:color_purple)'
-vimcmd_replace_symbol = '[<-](bold fg:color_purple)'
-vimcmd_visual_symbol = '[<-](bold fg:color_yellow)'
+#success_symbol = '[󰄵](bold color_lavender)'
+#error_symbol = '[󰅙](bold red)'
+success_symbol = '[󰄵](bold #9B96B5)'
+vimcmd_symbol = '[󰄵](bold #6c629d)'
+error_symbol = '[󰅙](bold red)'
