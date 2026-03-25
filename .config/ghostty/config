@@ -1,0 +1,41 @@
+# ---- Font ----
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 16
+font-thicken = false
+font-style = "Medium"
+
+# ---- Window & UI ----
+# Change this to true to allow tabs
+window-decoration = true
+
+# This makes the title bar blend in perfectly with your black background
+macos-titlebar-style = tabs
+
+# ---- Colors + Look and Feel ----
+background = #010101
+foreground = #ffffff
+cursor-color = #9B96B5
+cursor-text = #1A1A1E
+
+# Transparency & Blur (The macOS "Glass" Look)
+background-opacity = 0.85
+background-blur = macos-glass-regular
+
+# ---- Quick Terminal ----
+# Summon with Ctrl+A on your Moonlander
+keybind = ctrl+a=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-size = 40%
+quick-terminal-animation-duration = 0.15
+
+# ---- Keybindings (Tabs) ----
+keybind = ctrl+1=goto_tab:1
+keybind = ctrl+2=goto_tab:2
+keybind = ctrl+3=goto_tab:3
+keybind = ctrl+4=goto_tab:4
+keybind = ctrl+5=goto_tab:5
+keybind = ctrl+6=goto_tab:6
+keybind = ctrl+7=goto_tab:7
+keybind = ctrl+8=goto_tab:8
+keybind = ctrl+9=goto_tab:9
+
