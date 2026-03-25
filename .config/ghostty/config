@@ -22,8 +22,8 @@ background-opacity = 0.85
 background-blur = macos-glass-regular
 
 # ---- Quick Terminal ----
-# Summon with Ctrl+A on your Moonlander
-keybind = ctrl+a=toggle_quick_terminal
+# Summon with Ctrl+Shift+A (leaves Ctrl+A free for beginning-of-line)
+keybind = ctrl+shift+a=toggle_quick_terminal
 quick-terminal-position = center
 quick-terminal-size = 75%
 quick-terminal-animation-duration = 0.15
