@@ -16,19 +16,13 @@ return {
         enable = true,
       },
     },
-    config = function()
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-
+    config = function(_, opts)
       ---@diagnostic disable-next-line: missing-fields
-      require 'nvim-treesitter.configs'.setup({
-        highlight = {
-          enable = true, -- Enables syntax highlighting
-        },
-        -- Add this section for text objects
+      require('nvim-treesitter.configs').setup(vim.tbl_deep_extend("force", opts, {
         textobjects = {
           select = {
             enable = true,
-            lookahead = true, -- Automatically jump forward to text objects
+            lookahead = true,
             keymaps = {
               ["af"] = "@function.outer",
               ["if"] = "@function.inner",
@@ -37,7 +31,7 @@ return {
             },
           },
         },
-      })
+      }))
     end,
   },
   {

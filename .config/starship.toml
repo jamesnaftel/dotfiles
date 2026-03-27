@@ -10,6 +10,7 @@ $directory\
 [](color_purple)\
 $git_branch\
 $git_status\
+${custom.worktree}\
 [](fg:color_purple) \
 [](color_dev_bg)\
 $rust\
@@ -38,6 +39,13 @@ format = "[ $path ]($style)"
 truncation_length = 8      # Show up to 8 parent directories before shortening
 truncate_to_repo = false   # Don't cut the path off just because you're in a Git repo
 fish_style_pwd_dir_length = 3 # If it DOES truncate, show 3 chars (e.g., dev/pro/my-project)
+
+[custom.worktree]
+description = "Indicates when inside a git worktree"
+command = 'echo "wt"'
+when = 'git rev-parse --git-dir 2>/dev/null | grep -q "/worktrees/"'
+style = "bg:color_purple fg:#f0c674"
+format = '[ $output ]($style)'
 
 [git_branch]
 symbol = ""
