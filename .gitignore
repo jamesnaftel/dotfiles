@@ -11,3 +11,6 @@ lazygit
 uv/
 cursor/
 zed/
+op/
+acli/
+.DS_Store

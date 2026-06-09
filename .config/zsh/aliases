@@ -43,5 +43,7 @@ fi
 
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 alias glt='git log $(git describe --tags --abbrev=0)..HEAD --oneline'
+alias gbd='git branch | grep -vE "^\*|^[[:space:]]*(master|main)$" | sed "s/^[[:space:]]*//" | fzf --multi --layout=reverse --preview "git log --oneline -10 {}" | xargs -r git branch -D'
+alias gbdm='git branch --merged | grep -vE "^\*|^[[:space:]]*(master|main)$" | sed "s/^[[:space:]]*//" | fzf --multi --layout=reverse --preview "git log --oneline -10 {}" | xargs -r git branch -d'
 
 alias nvim-rebuild='(cd ~/dev/env/neovim && git pull && make distclean && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install)'
