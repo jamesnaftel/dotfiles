@@ -14,3 +14,11 @@ zed/
 op/
 acli/
 .DS_Store
+.config/hunk/
+.config/homebrew/
+.config/herdr/herdr-client.log
+.config/herdr/herdr-client.sock
+.config/herdr/herdr-server.log
+.config/herdr/herdr.sock
+.config/herdr/release-notes.json
+.config/herdr/session.json

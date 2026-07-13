@@ -1,0 +1,117 @@
+# herdr configuration
+# Mirrors ~/.tmux.conf ergonomics and aesthetics
+
+# ==============================================================================
+# TERMINAL
+# ==============================================================================
+[terminal]
+# Use default shell ($SHELL / zsh)
+shell_mode = "auto"
+new_cwd = "follow"
+
+# ==============================================================================
+# KEYBINDINGS (Prefix is Ctrl-b — same as tmux via Moonlander Thumb Key)
+# ==============================================================================
+[keys]
+prefix = "ctrl+b"
+
+# Splits: backslash = vertical split (same physical key as | without shift)
+#         minus     = horizontal split (same as tmux -)
+split_vertical = "prefix+backslash"
+split_horizontal = "prefix+minus"
+
+# Vim-style pane focus (h/j/k/l)
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Tab management
+new_tab = "prefix+c"
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+switch_tab = "prefix+1..9"
+close_tab = "prefix+shift+x"
+rename_tab = "prefix+shift+t"
+
+# Pane management
+close_pane = "prefix+x"
+zoom = "prefix+z"
+resize_mode = "prefix+r"
+
+# Workspace management
+workspace_picker = "prefix+w"
+new_workspace = "prefix+shift+n"
+rename_workspace = "prefix+shift+w"
+close_workspace = "prefix+shift+d"
+
+# Utility
+help = "prefix+?"
+reload_config = "prefix+shift+r"
+edit_scrollback = "prefix+e"
+toggle_sidebar = "prefix+b"
+detach = "prefix+q"
+
+# Navigate-mode movement (vim-style)
+navigate_pane_left = "h"
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"
+
+# Lazygit shortcut (like tmux custom binds)
+[[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
+
+# ==============================================================================
+# UI & THEME (Ghostty-optimized: Lavender #9B96B5 on transparent/dark)
+# ==============================================================================
+[theme]
+name = "catppuccin"
+
+[theme.custom]
+panel_bg = "reset"
+accent = "#9B96B5"
+
+[ui]
+# Accent matches tmux status bar lavender
+accent = "#9B96B5"
+
+# Mouse enabled (like tmux `setw -g mouse on`)
+mouse_capture = true
+
+# Sidebar
+sidebar_width = 26
+
+# Don't prompt for tab names — keep it fast like tmux
+prompt_new_tab_name = false
+
+# Confirm before closing workspaces (safety)
+confirm_close = true
+
+# Show agent labels on pane borders for context
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "herdr"
+delay_seconds = 1
+
+[ui.toast.herdr]
+position = "bottom-right"
+
+[ui.toast.clipboard]
+enabled = true
+position = "bottom-center"
+
+# ==============================================================================
+# SESSION
+# ==============================================================================
+[session]
+resume_agents_on_restore = true
+
+# ==============================================================================
+# EXPERIMENTAL
+# ==============================================================================
+[experimental]
+pane_history = false

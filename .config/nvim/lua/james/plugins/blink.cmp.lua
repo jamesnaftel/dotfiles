@@ -12,6 +12,12 @@ return {
     opts = {
       keymap = {
         ['<C-y>'] = { 'select_and_accept' },
+        -- Accept completion on CR; when no item selected, let mini.pairs expand pairs
+        ['<CR>'] = {
+          'accept',
+          function() return require('mini.pairs').cr() end,
+          'fallback',
+        },
       },
 
       appearance = {
@@ -38,6 +44,9 @@ return {
           -- },
         },
       },
+
+      -- Disable cmdline completions to avoid unpack overflow with plugins like diffview
+      cmdline = { sources = {} },
 
       signature = { enabled = true },
 
