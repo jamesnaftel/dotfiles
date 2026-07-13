@@ -4,7 +4,7 @@ return {
   dependencies = {
     -- "nvim-lua/plenary.nvim",
     "zbirenbaum/copilot.lua",
-    "nvim-treesitter/nvim-treesitter",
+    "neovim-treesitter/nvim-treesitter",
   },
   opts = {
     display = {

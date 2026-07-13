@@ -15,6 +15,7 @@ op/
 acli/
 .DS_Store
 .config/hunk/
+.config/nvim/lazy-lock.json
 .config/homebrew/
 .config/herdr/herdr-client.log
 .config/herdr/herdr-client.sock

@@ -4,7 +4,7 @@ return {
     enabled = true,
     dependencies = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" },
+      { "neovim-treesitter/nvim-treesitter" },
     },
     keys = {
       {
