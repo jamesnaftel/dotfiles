@@ -16,11 +16,7 @@ return {
       -- Highlighting is no longer automatic in the new API
       vim.api.nvim_create_autocmd('FileType', {
         callback = function()
-          local ok = pcall(vim.treesitter.start)
-          if ok then
-            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            vim.wo.foldmethod = 'expr'
-          end
+          pcall(vim.treesitter.start)
         end,
       })
     end,
